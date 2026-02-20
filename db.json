@@ -1,0 +1,267 @@
+{
+  "orders": [
+    {
+      "id": "ORD-8492",
+      "instrument": "PETR4",
+      "category": "Petrobras PN",
+      "type": "Ações",
+      "side": "COMPRA",
+      "price": 38.50,
+      "currentPrice": 38.50,
+      "quantity": 1000,
+      "remainingQuantity": 1000,
+      "status": "Aberta",
+      "createdAt": "2026-02-20T14:32:01Z"
+    },
+    {
+      "id": "ORD-8491",
+      "instrument": "VALE3",
+      "category": "Vale ON",
+      "type": "Ações",
+      "side": "VENDA",
+      "price": 65.20,
+      "currentPrice": 65.20,
+      "quantity": 5000,
+      "remainingQuantity": 2500,
+      "status": "Parcial",
+      "createdAt": "2026-02-20T14:28:45Z"
+    },
+    {
+      "id": "ORD-8488",
+      "instrument": "ITUB4",
+      "category": "Itaú Unibanco PN",
+      "type": "Ações",
+      "side": "COMPRA",
+      "price": 32.10,
+      "currentPrice": 32.10,
+      "quantity": 500,
+      "remainingQuantity": 0,
+      "status": "Executada",
+      "createdAt": "2026-02-20T13:15:00Z"
+    },
+    {
+      "id": "ORD-8485",
+      "instrument": "BBDC4",
+      "category": "Bradesco PN",
+      "type": "Ações",
+      "side": "VENDA",
+      "price": 14.80,
+      "currentPrice": 14.80,
+      "quantity": 2000,
+      "remainingQuantity": 2000,
+      "status": "Cancelada",
+      "createdAt": "2026-02-20T11:42:10Z"
+    },
+    {
+      "id": "ORD-8480",
+      "instrument": "WEGE3",
+      "category": "Weg ON",
+      "type": "Ações",
+      "side": "COMPRA",
+      "price": 41.30,
+      "currentPrice": 41.30,
+      "quantity": 300,
+      "remainingQuantity": 0,
+      "status": "Executada",
+      "createdAt": "2026-02-20T10:05:22Z"
+    },
+    {
+      "id": "ORD-8475",
+      "instrument": "HGLG11",
+      "category": "CSHG Logística",
+      "type": "FIIs",
+      "side": "COMPRA",
+      "price": 158.50,
+      "currentPrice": 162.30,
+      "quantity": 250,
+      "remainingQuantity": 0,
+      "status": "Executada",
+      "createdAt": "2026-02-19T16:00:00Z"
+    },
+    {
+      "id": "ORD-8470",
+      "instrument": "KNRI11",
+      "category": "Kinea Renda Imob.",
+      "type": "FIIs",
+      "side": "COMPRA",
+      "price": 162.00,
+      "currentPrice": 159.80,
+      "quantity": 180,
+      "remainingQuantity": 0,
+      "status": "Executada",
+      "createdAt": "2026-02-19T14:30:00Z"
+    },
+    {
+      "id": "ORD-8465",
+      "instrument": "Tesouro Selic",
+      "category": "Tesouro Nacional",
+      "type": "Renda Fixa",
+      "side": "COMPRA",
+      "price": 1000.00,
+      "currentPrice": 1012.45,
+      "quantity": 20,
+      "remainingQuantity": 0,
+      "status": "Executada",
+      "createdAt": "2026-02-18T09:00:00Z"
+    },
+    {
+      "id": "ORD-8460",
+      "instrument": "MGLU3",
+      "category": "Magalu ON",
+      "type": "Ações",
+      "side": "VENDA",
+      "price": 2.50,
+      "currentPrice": 2.45,
+      "quantity": 1000,
+      "remainingQuantity": 1000,
+      "status": "Aberta",
+      "createdAt": "2026-02-17T11:00:00Z"
+    },
+    {
+      "id": "ORD-8455",
+      "instrument": "SANB11",
+      "category": "Santander Brasil",
+      "type": "Ações",
+      "side": "COMPRA",
+      "price": 28.15,
+      "currentPrice": 28.50,
+      "quantity": 600,
+      "remainingQuantity": 0,
+      "status": "Executada",
+      "createdAt": "2026-02-17T10:15:00Z"
+    }
+  ],
+  "history": [
+    {
+      "id": "h1",
+      "orderId": "ORD-8488",
+      "instrument": "ITUB4",
+      "eventType": "Execução Total",
+      "details": "Compra de 500 @ R$ 32,10",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-20T13:15:00Z"
+    },
+    {
+      "id": "h2",
+      "orderId": "ORD-8492",
+      "instrument": "PETR4",
+      "eventType": "Ordem Criada",
+      "details": "Compra de 1.000 @ R$ 38,50",
+      "origin": "Carlos Mendes",
+      "timestamp": "2026-02-20T14:32:01Z"
+    },
+    {
+      "id": "h3",
+      "orderId": "ORD-8491",
+      "instrument": "VALE3",
+      "eventType": "Execução Parcial",
+      "details": "Venda de 2.500 @ R$ 65,20",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-20T14:28:50Z"
+    },
+    {
+      "id": "h4",
+      "orderId": "ORD-8491",
+      "instrument": "VALE3",
+      "eventType": "Ordem Criada",
+      "details": "Venda de 5.000 @ R$ 65,20",
+      "origin": "Carlos Mendes",
+      "timestamp": "2026-02-20T14:28:45Z"
+    },
+    {
+      "id": "h5",
+      "orderId": "ORD-8485",
+      "instrument": "BBDC4",
+      "eventType": "Cancelamento",
+      "details": "Cancelamento manual pelo usuário",
+      "origin": "Carlos Mendes",
+      "timestamp": "2026-02-20T11:42:10Z"
+    },
+    {
+      "id": "h6",
+      "orderId": "ORD-8480",
+      "instrument": "WEGE3",
+      "eventType": "Execução Total",
+      "details": "Compra de 300 @ R$ 41,30",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-20T10:05:22Z"
+    },
+    {
+      "id": "h7",
+      "orderId": "ORD-8475",
+      "instrument": "HGLG11",
+      "eventType": "Ordem Criada",
+      "details": "Compra de 250 @ R$ 158,50",
+      "origin": "Carlos Mendes",
+      "timestamp": "2026-02-19T16:00:00Z"
+    },
+    {
+      "id": "h8",
+      "orderId": "ORD-8465",
+      "instrument": "Tesouro Selic",
+      "eventType": "Execução Total",
+      "details": "Compra de 20 @ R$ 1000,00",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-18T09:05:00Z"
+    },
+    {
+      "id": "h9",
+      "orderId": "ORD-8460",
+      "instrument": "MGLU3",
+      "eventType": "Ordem Criada",
+      "details": "Venda de 1.000 @ R$ 2,50",
+      "origin": "Carlos Mendes",
+      "timestamp": "2026-02-17T11:00:00Z"
+    },
+    {
+      "id": "h10",
+      "orderId": "ORD-8455",
+      "instrument": "SANB11",
+      "eventType": "Execução Total",
+      "details": "Compra de 600 @ R$ 28,15",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-17T10:20:00Z"
+    }
+  ],
+  "dashboard_stats": {
+    "patrimonio_total": 142850.00,
+    "saldo_disponivel": 14285.00,
+    "valor_investido": 128565.00,
+    "rentabilidade_mes": 3428.40,
+    "variacao_diaria_percent": 2.4,
+    "evolucao_patrimonial": [
+      {
+        "data": "01 Out",
+        "valor": 85000
+      },
+      {
+        "data": "05 Out",
+        "valor": 92000
+      },
+      {
+        "data": "10 Out",
+        "valor": 89000
+      },
+      {
+        "data": "15 Out",
+        "valor": 105000
+      },
+      {
+        "data": "20 Out",
+        "valor": 115000
+      },
+      {
+        "data": "25 Out",
+        "valor": 125000
+      },
+      {
+        "data": "30 Out",
+        "valor": 138000
+      },
+      {
+        "data": "31 Out",
+        "valor": 142850
+      }
+    ]
+  }
+}
