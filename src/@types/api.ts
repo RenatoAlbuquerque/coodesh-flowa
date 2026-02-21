@@ -20,7 +20,11 @@ export interface OrderHistory {
   id: string;
   orderId: string;
   instrument: string;
-  eventType: 'Ordem Criada' | 'Execução Parcial' | 'Execução Total' | 'Cancelamento';
+  eventType:
+    | 'Ordem Criada'
+    | 'Execução Parcial'
+    | 'Execução Total'
+    | 'Cancelamento';
   details: string;
   origin: string;
   timestamp: string;
