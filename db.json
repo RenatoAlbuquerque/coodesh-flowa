@@ -1,233 +1,9 @@
 {
-  "orders": [
-    {
-      "id": "ORD-8492",
-      "instrument": "PETR4",
-      "category": "Petrobras PN",
-      "type": "Ações",
-      "side": "COMPRA",
-      "price": 38.50,
-      "currentPrice": 38.50,
-      "quantity": 1000,
-      "remainingQuantity": 1000,
-      "status": "Aberta",
-      "createdAt": "2026-02-20T14:32:01Z"
-    },
-    {
-      "id": "ORD-8491",
-      "instrument": "VALE3",
-      "category": "Vale ON",
-      "type": "Ações",
-      "side": "VENDA",
-      "price": 65.20,
-      "currentPrice": 65.20,
-      "quantity": 5000,
-      "remainingQuantity": 2500,
-      "status": "Parcial",
-      "createdAt": "2026-02-20T14:28:45Z"
-    },
-    {
-      "id": "ORD-8488",
-      "instrument": "ITUB4",
-      "category": "Itaú Unibanco PN",
-      "type": "Ações",
-      "side": "COMPRA",
-      "price": 32.10,
-      "currentPrice": 32.10,
-      "quantity": 500,
-      "remainingQuantity": 0,
-      "status": "Executada",
-      "createdAt": "2026-02-20T13:15:00Z"
-    },
-    {
-      "id": "ORD-8485",
-      "instrument": "BBDC4",
-      "category": "Bradesco PN",
-      "type": "Ações",
-      "side": "VENDA",
-      "price": 14.80,
-      "currentPrice": 14.80,
-      "quantity": 2000,
-      "remainingQuantity": 2000,
-      "status": "Cancelada",
-      "createdAt": "2026-02-20T11:42:10Z"
-    },
-    {
-      "id": "ORD-8480",
-      "instrument": "WEGE3",
-      "category": "Weg ON",
-      "type": "Ações",
-      "side": "COMPRA",
-      "price": 41.30,
-      "currentPrice": 41.30,
-      "quantity": 300,
-      "remainingQuantity": 0,
-      "status": "Executada",
-      "createdAt": "2026-02-20T10:05:22Z"
-    },
-    {
-      "id": "ORD-8475",
-      "instrument": "HGLG11",
-      "category": "CSHG Logística",
-      "type": "FIIs",
-      "side": "COMPRA",
-      "price": 158.50,
-      "currentPrice": 162.30,
-      "quantity": 250,
-      "remainingQuantity": 0,
-      "status": "Executada",
-      "createdAt": "2026-02-19T16:00:00Z"
-    },
-    {
-      "id": "ORD-8470",
-      "instrument": "KNRI11",
-      "category": "Kinea Renda Imob.",
-      "type": "FIIs",
-      "side": "COMPRA",
-      "price": 162.00,
-      "currentPrice": 159.80,
-      "quantity": 180,
-      "remainingQuantity": 0,
-      "status": "Executada",
-      "createdAt": "2026-02-19T14:30:00Z"
-    },
-    {
-      "id": "ORD-8465",
-      "instrument": "Tesouro Selic",
-      "category": "Tesouro Nacional",
-      "type": "Renda Fixa",
-      "side": "COMPRA",
-      "price": 1000.00,
-      "currentPrice": 1012.45,
-      "quantity": 20,
-      "remainingQuantity": 0,
-      "status": "Executada",
-      "createdAt": "2026-02-18T09:00:00Z"
-    },
-    {
-      "id": "ORD-8460",
-      "instrument": "MGLU3",
-      "category": "Magalu ON",
-      "type": "Ações",
-      "side": "VENDA",
-      "price": 2.50,
-      "currentPrice": 2.45,
-      "quantity": 1000,
-      "remainingQuantity": 1000,
-      "status": "Aberta",
-      "createdAt": "2026-02-17T11:00:00Z"
-    },
-    {
-      "id": "ORD-8455",
-      "instrument": "SANB11",
-      "category": "Santander Brasil",
-      "type": "Ações",
-      "side": "COMPRA",
-      "price": 28.15,
-      "currentPrice": 28.50,
-      "quantity": 600,
-      "remainingQuantity": 0,
-      "status": "Executada",
-      "createdAt": "2026-02-17T10:15:00Z"
-    }
-  ],
-  "history": [
-    {
-      "id": "h1",
-      "orderId": "ORD-8488",
-      "instrument": "ITUB4",
-      "eventType": "Execução Total",
-      "details": "Compra de 500 @ R$ 32,10",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-01-20T13:15:00Z"
-    },
-    {
-      "id": "h2",
-      "orderId": "ORD-8492",
-      "instrument": "PETR4",
-      "eventType": "Ordem Criada",
-      "details": "Compra de 1.000 @ R$ 38,50",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-01-22T14:32:01Z"
-    },
-    {
-      "id": "h3",
-      "orderId": "ORD-8491",
-      "instrument": "VALE3",
-      "eventType": "Execução Parcial",
-      "details": "Venda de 2.500 @ R$ 65,20",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-02-20T14:28:50Z"
-    },
-    {
-      "id": "h4",
-      "orderId": "ORD-8491",
-      "instrument": "VALE3",
-      "eventType": "Ordem Criada",
-      "details": "Venda de 5.000 @ R$ 65,20",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-20T14:28:45Z"
-    },
-    {
-      "id": "h5",
-      "orderId": "ORD-8485",
-      "instrument": "BBDC4",
-      "eventType": "Cancelamento",
-      "details": "Cancelamento manual pelo usuário",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-20T11:42:10Z"
-    },
-    {
-      "id": "h6",
-      "orderId": "ORD-8480",
-      "instrument": "WEGE3",
-      "eventType": "Execução Total",
-      "details": "Compra de 300 @ R$ 41,30",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-02-20T10:05:22Z"
-    },
-    {
-      "id": "h7",
-      "orderId": "ORD-8475",
-      "instrument": "HGLG11",
-      "eventType": "Ordem Criada",
-      "details": "Compra de 250 @ R$ 158,50",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-19T16:00:00Z"
-    },
-    {
-      "id": "h8",
-      "orderId": "ORD-8465",
-      "instrument": "Tesouro Selic",
-      "eventType": "Execução Total",
-      "details": "Compra de 20 @ R$ 1000,00",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-02-18T09:05:00Z"
-    },
-    {
-      "id": "h9",
-      "orderId": "ORD-8460",
-      "instrument": "MGLU3",
-      "eventType": "Ordem Criada",
-      "details": "Venda de 1.000 @ R$ 2,50",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-17T11:00:00Z"
-    },
-    {
-      "id": "h10",
-      "orderId": "ORD-8455",
-      "instrument": "SANB11",
-      "eventType": "Execução Total",
-      "details": "Compra de 600 @ R$ 28,15",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-02-17T10:20:00Z"
-    }
-  ],
   "dashboard_stats": {
-    "patrimonio_total": 142850.00,
-    "saldo_disponivel": 14285.00,
-    "valor_investido": 128565.00,
-    "rentabilidade_mes": 3428.40,
+    "patrimonio_total": 142850,
+    "saldo_disponivel": 14285,
+    "valor_investido": 128565,
+    "rentabilidade_mes": 3428.4,
     "variacao_diaria_percent": 2.4,
     "evolucao_patrimonial": [
       {
@@ -235,28 +11,8 @@
         "valor": 85000
       },
       {
-        "data": "05 Out",
-        "valor": 92000
-      },
-      {
-        "data": "10 Out",
-        "valor": 89000
-      },
-      {
         "data": "15 Out",
         "valor": 105000
-      },
-      {
-        "data": "20 Out",
-        "valor": 115000
-      },
-      {
-        "data": "25 Out",
-        "valor": 125000
-      },
-      {
-        "data": "30 Out",
-        "valor": 138000
       },
       {
         "data": "31 Out",
@@ -264,106 +20,357 @@
       }
     ]
   },
+  "orders": [
+    {
+      "id": "ORD-1001",
+      "instrument": "VALE3",
+      "side": "COMPRA",
+      "price": 65.2,
+      "currentPrice": 66.1,
+      "quantity": 100,
+      "remainingQuantity": 0,
+      "status": "Executada",
+      "createdAt": "2026-02-15T09:00:00Z"
+    },
+    {
+      "id": "ORD-1002",
+      "instrument": "PETR4",
+      "side": "VENDA",
+      "price": 38.5,
+      "currentPrice": 37.9,
+      "quantity": 500,
+      "remainingQuantity": 200,
+      "status": "Parcial",
+      "createdAt": "2026-02-16T10:30:00Z"
+    },
+    {
+      "id": "ORD-1003",
+      "instrument": "ITUB4",
+      "side": "COMPRA",
+      "price": 32.1,
+      "currentPrice": 32.1,
+      "quantity": 200,
+      "remainingQuantity": 200,
+      "status": "Aberta",
+      "createdAt": "2026-02-17T14:15:00Z"
+    },
+    {
+      "id": "ORD-1004",
+      "instrument": "BBDC4",
+      "side": "COMPRA",
+      "price": 14.8,
+      "currentPrice": 14.8,
+      "quantity": 1000,
+      "remainingQuantity": 1000,
+      "status": "Cancelada",
+      "createdAt": "2026-02-18T11:00:00Z"
+    },
+    {
+      "id": "ORD-1005",
+      "instrument": "WEGE3",
+      "side": "COMPRA",
+      "price": 41.3,
+      "currentPrice": 42,
+      "quantity": 50,
+      "remainingQuantity": 0,
+      "status": "Executada",
+      "createdAt": "2026-02-19T09:45:00Z"
+    },
+    {
+      "id": "ORD-1006",
+      "instrument": "HGLG11",
+      "side": "COMPRA",
+      "price": 158.5,
+      "currentPrice": 160,
+      "quantity": 10,
+      "remainingQuantity": 0,
+      "status": "Executada",
+      "createdAt": "2026-02-20T10:00:00Z"
+    },
+    {
+      "id": "ORD-1007",
+      "instrument": "KNRI11",
+      "side": "VENDA",
+      "price": 162,
+      "currentPrice": 162,
+      "quantity": 20,
+      "remainingQuantity": 5,
+      "status": "Parcial",
+      "createdAt": "2026-02-20T13:00:00Z"
+    },
+    {
+      "id": "ORD-1008",
+      "instrument": "MGLU3",
+      "side": "COMPRA",
+      "price": 2.5,
+      "currentPrice": 2.4,
+      "quantity": 2000,
+      "remainingQuantity": 2000,
+      "status": "Aberta",
+      "createdAt": "2026-02-21T15:20:00Z"
+    },
+    {
+      "id": "ORD-1009",
+      "instrument": "TESOURO_SELIC",
+      "side": "COMPRA",
+      "price": 1000,
+      "currentPrice": 1010,
+      "quantity": 5,
+      "remainingQuantity": 0,
+      "status": "Executada",
+      "createdAt": "2026-02-21T16:00:00Z"
+    },
+    {
+      "id": "ORD-1010",
+      "instrument": "SANB11",
+      "side": "VENDA",
+      "price": 28.5,
+      "currentPrice": 28.5,
+      "quantity": 300,
+      "remainingQuantity": 0,
+      "status": "Executada",
+      "createdAt": "2026-02-22T08:30:00Z"
+    },
+    {
+      "id": "ORD-1746",
+      "instrument": "KNRI11",
+      "side": "COMPRA",
+      "price": 170,
+      "quantity": 10,
+      "status": "Executada",
+      "remainingQuantity": 0,
+      "createdAt": "2026-02-22T03:45:10.600Z",
+      "currentPrice": 170
+    },
+    {
+      "id": "ORD-1998",
+      "instrument": "KNRI11",
+      "side": "COMPRA",
+      "price": 90,
+      "quantity": 5,
+      "status": "Cancelada",
+      "remainingQuantity": 0,
+      "createdAt": "2026-02-22T03:45:51.652Z",
+      "currentPrice": 90
+    },
+    {
+      "id": "ORD-8996",
+      "instrument": "KNRI11",
+      "side": "COMPRA",
+      "price": 190,
+      "quantity": 5,
+      "status": "Executada",
+      "remainingQuantity": 0,
+      "createdAt": "2026-02-22T03:46:11.629Z",
+      "currentPrice": 190
+    }
+  ],
+  "history": [
+    {
+      "id": "H-001",
+      "orderId": "ORD-1001",
+      "instrument": "VALE3",
+      "eventType": "Ordem Criada",
+      "details": "COMPRA de 100 @ R$ 65,20",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-15T09:00:00Z"
+    },
+    {
+      "id": "H-002",
+      "orderId": "ORD-1001",
+      "instrument": "VALE3",
+      "eventType": "Execução Total",
+      "details": "Match total contra liquidez do mercado",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-15T09:05:00Z"
+    },
+    {
+      "id": "H-003",
+      "orderId": "ORD-1002",
+      "instrument": "PETR4",
+      "eventType": "Execução Parcial",
+      "details": "Venda de 300 @ R$ 38,50",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-16T11:00:00Z"
+    },
+    {
+      "id": "H-004",
+      "orderId": "ORD-1004",
+      "instrument": "BBDC4",
+      "eventType": "Cancelamento",
+      "details": "Usuário solicitou cancelamento",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-18T11:30:00Z"
+    },
+    {
+      "id": "H-005",
+      "orderId": "ORD-1005",
+      "instrument": "WEGE3",
+      "eventType": "Execução Total",
+      "details": "Compra de 50 @ R$ 41,30",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-19T10:00:00Z"
+    },
+    {
+      "id": "H-006",
+      "orderId": "ORD-1006",
+      "instrument": "HGLG11",
+      "eventType": "Ordem Criada",
+      "details": "COMPRA de 10 @ R$ 158,50",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-20T10:00:00Z"
+    },
+    {
+      "id": "H-007",
+      "orderId": "ORD-1006",
+      "instrument": "HGLG11",
+      "eventType": "Execução Total",
+      "details": "Execução imediata (Market Order)",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-20T10:01:00Z"
+    },
+    {
+      "id": "H-008",
+      "orderId": "ORD-1009",
+      "instrument": "TESOURO_SELIC",
+      "eventType": "Execução Total",
+      "details": "Aporte em Renda Fixa confirmado",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-21T16:05:00Z"
+    },
+    {
+      "id": "H-009",
+      "orderId": "ORD-1010",
+      "instrument": "SANB11",
+      "eventType": "Ordem Criada",
+      "details": "VENDA de 300 @ R$ 28,50",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-22T08:30:00Z"
+    },
+    {
+      "id": "H-010",
+      "orderId": "ORD-1010",
+      "instrument": "SANB11",
+      "eventType": "Execução Total",
+      "details": "Venda finalizada com sucesso",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-22T08:45:00Z"
+    },
+    {
+      "id": "4f4f",
+      "orderId": "ORD-1746",
+      "instrument": "KNRI11",
+      "eventType": "Execução Total",
+      "details": "COMPRA de 10 @ R$ 170",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-22T03:45:10.600Z"
+    },
+    {
+      "id": "3606",
+      "orderId": "ORD-1007",
+      "instrument": "KNRI11",
+      "eventType": "Execução Parcial",
+      "details": "Execução contra ORD-1746",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-22T03:45:10.600Z"
+    },
+    {
+      "id": "9e9b",
+      "orderId": "ORD-1998",
+      "instrument": "KNRI11",
+      "eventType": "Ordem Criada",
+      "details": "COMPRA de 5 @ R$ 90",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-22T03:45:51.652Z"
+    },
+    {
+      "id": "6502",
+      "orderId": "ORD-8996",
+      "instrument": "KNRI11",
+      "eventType": "Execução Total",
+      "details": "COMPRA de 5 @ R$ 190",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-22T03:46:11.629Z"
+    },
+    {
+      "id": "bece",
+      "orderId": "ORD-1007",
+      "instrument": "KNRI11",
+      "eventType": "Execução Parcial",
+      "details": "Execução contra ORD-8996",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-22T03:46:11.629Z"
+    },
+    {
+      "id": "453f",
+      "orderId": "ORD-1998",
+      "instrument": "KNRI11",
+      "eventType": "Cancelamento",
+      "details": "Cancelamento manual da ordem ORD-1998",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-22T03:48:27.647Z"
+    }
+  ],
   "available_assets": [
     {
+      "id": "a1",
       "symbol": "VALE3",
       "name": "Vale S.A.",
       "type": "Ações"
     },
     {
+      "id": "a2",
       "symbol": "PETR4",
       "name": "Petrobras PN",
       "type": "Ações"
     },
     {
+      "id": "a3",
       "symbol": "ITUB4",
       "name": "Itaú Unibanco PN",
       "type": "Ações"
     },
     {
+      "id": "a4",
       "symbol": "BBDC4",
       "name": "Bradesco PN",
       "type": "Ações"
     },
     {
+      "id": "a5",
       "symbol": "WEGE3",
       "name": "WEG S.A.",
       "type": "Ações"
     },
     {
-      "symbol": "MGLU3",
-      "name": "Magazine Luiza",
-      "type": "Ações"
-    },
-    {
-      "symbol": "ABEV3",
-      "name": "Ambev S.A.",
-      "type": "Ações"
-    },
-    {
-      "symbol": "RENT3",
-      "name": "Localiza Rent a Car",
-      "type": "Ações"
-    },
-    {
+      "id": "a6",
       "symbol": "HGLG11",
       "name": "CGHG Logística",
       "type": "FIIs"
     },
     {
-      "symbol": "XPLG11",
-      "name": "XP Logística",
-      "type": "FIIs"
-    },
-    {
+      "id": "a7",
       "symbol": "KNRI11",
       "name": "Kinea Renda Imobiliária",
       "type": "FIIs"
     },
     {
-      "symbol": "MXRF11",
-      "name": "Maxi Renda",
-      "type": "FIIs"
+      "id": "a8",
+      "symbol": "MGLU3",
+      "name": "Magazine Luiza",
+      "type": "Ações"
     },
     {
-      "symbol": "VISC11",
-      "name": "Vinci Shopping Centers",
-      "type": "FIIs"
-    },
-    {
-      "symbol": "BTLG11",
-      "name": "BTG Pactual Logística",
-      "type": "FIIs"
-    },
-    {
+      "id": "a9",
       "symbol": "TESOURO_SELIC",
       "name": "Tesouro Selic 2029",
       "type": "Renda Fixa"
     },
     {
-      "symbol": "CDB_ITAU_100",
-      "name": "CDB Itaú 100% CDI",
-      "type": "Renda Fixa"
-    },
-    {
-      "symbol": "LCI_CAIXA_90",
-      "name": "LCI Caixa Econômica",
-      "type": "Renda Fixa"
-    },
-    {
-      "symbol": "DEB_VALE_2030",
-      "name": "Debêntures Vale S.A.",
-      "type": "Renda Fixa"
-    },
-    {
-      "symbol": "CRA_BRF_2028",
-      "name": "CRA BRF S.A.",
-      "type": "Renda Fixa"
-    },
-    {
-      "symbol": "LCA_BB_92",
-      "name": "LCA Banco do Brasil",
-      "type": "Renda Fixa"
+      "id": "a10",
+      "symbol": "SANB11",
+      "name": "Santander Brasil",
+      "type": "Ações"
     }
   ]
 }

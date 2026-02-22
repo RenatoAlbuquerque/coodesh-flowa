@@ -61,13 +61,15 @@ export const TableOrderModal = ({ order }: { order: Order }) => {
         <IconButton
           size="small"
           sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' } }}
-          onClick={() => console.log('Visualizar:', order.id)}
         >
           <VisibilityOutlinedIcon fontSize="small" />
         </IconButton>
       </Tooltip>
 
-      <Tooltip title={isCancelable ? 'Cancelar Ordem' : 'Ordem não cancelável'}>
+      <Tooltip
+        title={isCancelable ? 'Cancelar Ordem' : 'Ordem não cancelável'}
+        onClick={(e) => e.stopPropagation()}
+      >
         <span>
           {' '}
           <IconButton
@@ -213,7 +215,7 @@ export const TableOrderModal = ({ order }: { order: Order }) => {
               '&:hover': { boxShadow: 'none', bgcolor: 'error.dark' },
             }}
           >
-            8{isPending ? 'Cancelando...' : 'Confirmar'}
+            {isPending ? 'Cancelando...' : 'Confirmar'}
           </Button>
         </DialogActions>
       </Dialog>

@@ -14,7 +14,7 @@ export const orderColumns: GridColDef[] = [
     minWidth: 90,
     renderCell: (params) => (
       <Typography variant="body2" fontWeight={600} color="text.primary">
-        #{params.value}
+        {params.value}
       </Typography>
     ),
   },

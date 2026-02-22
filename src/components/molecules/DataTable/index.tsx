@@ -8,11 +8,13 @@ import { ptBR } from '@mui/x-data-grid/locales';
 interface DataTableProps<T> {
   rows: T[];
   columns: GridColDef[];
+  onRowClick?: (arg: unknown) => void;
 }
 
 export const DataTable = <T extends Record<string, unknown>>({
   rows,
   columns,
+  onRowClick,
 }: DataTableProps<T>) => {
   const {
     palette: { primary, text, common },
@@ -50,6 +52,7 @@ export const DataTable = <T extends Record<string, unknown>>({
       />
 
       <DataGrid
+        onRowClick={onRowClick}
         autoHeight
         rows={rows}
         columns={columns}

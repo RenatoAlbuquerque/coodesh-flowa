@@ -29,7 +29,6 @@ export const HistoryTitle = () => {
         startIcon={<DownloadOutlinedIcon htmlColor={text.primary} />}
         sx={{ borderColor: '#cacaca' }}
         size="large"
-        onClick={() => console.log('teste')}
       >
         <Typography
           textTransform={'capitalize'}
