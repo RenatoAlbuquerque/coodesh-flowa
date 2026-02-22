@@ -21,6 +21,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import HistoryIcon from '@mui/icons-material/History';
 import dayjs from 'dayjs';
 import type { Order, OrderHistory } from '../../../../@types/api';
+import { formatCurrency } from '../../../../utils/formatNumber';
 
 interface Props {
   open: boolean;
@@ -85,13 +86,39 @@ export const OrderHistoryTimelineModal = memo(
         </DialogTitle>
 
         <DialogContent dividers sx={{ display: 'flex' }}>
-          <Box mb={3}>
-            <Typography variant="subtitle2" color="text.secondary">
-              Instrumento
-            </Typography>
-            <Typography variant="h6" fontWeight={700}>
-              {order.instrument}
-            </Typography>
+          <Box>
+            <Box mb={1}>
+              <Typography variant="subtitle2" color="text.secondary">
+                Instrumento
+              </Typography>
+              <Typography variant="h6" fontWeight={700}>
+                {order.instrument}
+              </Typography>
+            </Box>
+            <Box mb={1}>
+              <Typography variant="subtitle2" color="text.secondary">
+                Preço
+              </Typography>
+              <Typography variant="body1" fontWeight={700}>
+                {formatCurrency(order.price)}
+              </Typography>
+            </Box>
+            <Box mb={1}>
+              <Typography variant="subtitle2" color="text.secondary">
+                Quantidade
+              </Typography>
+              <Typography variant="body2" fontWeight={700}>
+                {order.quantity}
+              </Typography>
+            </Box>
+            <Box mb={1}>
+              <Typography variant="subtitle2" color="text.secondary">
+                Quantidade Restante
+              </Typography>
+              <Typography variant="body2" fontWeight={700}>
+                {order.remainingQuantity}
+              </Typography>
+            </Box>
           </Box>
 
           <Timeline sx={TIMELINE_STYLES}>

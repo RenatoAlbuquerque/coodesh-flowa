@@ -28,6 +28,7 @@ import { formatCurrency } from '../../../../utils/formatNumber';
 import { AutocompleteAvailableTickets } from '../../../atoms/Autocomplete/AutocompleteAvailableTickets';
 import { getUniqueValues } from '../../../../utils/filterAttributes';
 import { toast } from 'react-toastify';
+import { useEffect } from 'react';
 
 interface NewOrderModalProps {
   open: boolean;
@@ -35,7 +36,7 @@ interface NewOrderModalProps {
 }
 
 export const NewOrderModal = ({ open, onClose }: NewOrderModalProps) => {
-  const { createOrder, availableAssets } = useOrderStore();
+  const { createOrder, availableAssets, stats, getStats } = useOrderStore();
   const INSTRUMENT_OPTIONS = getUniqueValues(availableAssets, 'symbol');
   const {
     palette: { common },
@@ -56,10 +57,24 @@ export const NewOrderModal = ({ open, onClose }: NewOrderModalProps) => {
     },
   });
 
+  const watchedSide = useWatch({ control, name: 'side' });
   const watchedPrice = useWatch({ control, name: 'price' }) || 0;
   const watchedQuantity = useWatch({ control, name: 'quantity' }) || 0;
+
+  const currentBalance = stats?.saldo_disponivel || 0;
   const totalEstimated =
     (Number(watchedPrice) || 0) * (Number(watchedQuantity) || 0);
+
+  const remainingBalance =
+    watchedSide === 'COMPRA'
+      ? currentBalance - totalEstimated
+      : currentBalance + totalEstimated;
+
+  const isNegativated = watchedSide === 'COMPRA' && remainingBalance < 0;
+
+  useEffect(() => {
+    if (open) getStats();
+  }, [open, getStats]);
 
   const onSubmit: SubmitHandler<OrderFormInput> = async (data) => {
     await toast.promise(
@@ -259,10 +274,8 @@ export const NewOrderModal = ({ open, onClose }: NewOrderModalProps) => {
                         field.onChange('');
                         return;
                       }
-
                       if (value.includes('.') && value.split('.')[1].length > 2)
                         return;
-
                       field.onChange(value);
                     }}
                   />
@@ -281,26 +294,82 @@ export const NewOrderModal = ({ open, onClose }: NewOrderModalProps) => {
                 p={2.5}
                 borderRadius={2}
                 display="flex"
-                justifyContent="space-between"
-                alignItems="center"
+                flexDirection="column"
+                gap={1.5}
                 border="1px solid"
                 borderColor="divider"
               >
-                <Box>
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  alignItems="center"
+                >
+                  <Box>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      fontWeight={600}
+                    >
+                      TOTAL ESTIMADO
+                    </Typography>
+                    <Typography variant="caption" color="text.disabled">
+                      Taxas da Flowa Stock não inclusas
+                    </Typography>
+                  </Box>
+                  <Typography
+                    variant="h6"
+                    fontWeight={800}
+                    color="primary.main"
+                  >
+                    {formatCurrency(totalEstimated)}
+                  </Typography>
+                </Box>
+
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  alignItems="center"
+                  pt={1.5}
+                  sx={{ borderTop: '1px dashed', borderColor: 'divider' }}
+                >
                   <Typography
                     variant="body2"
                     color="text.secondary"
                     fontWeight={600}
                   >
-                    TOTAL ESTIMADO
+                    SALDO APÓS OPERAÇÃO
                   </Typography>
-                  <Typography variant="caption" color="text.disabled">
-                    Taxas da Flowa Stock não inclusas
+                  <Typography
+                    variant="h6"
+                    fontWeight={800}
+                    color={isNegativated ? 'error.main' : 'success.main'}
+                  >
+                    {formatCurrency(remainingBalance)}
                   </Typography>
                 </Box>
-                <Typography variant="h6" fontWeight={800} color="primary.main">
-                  {formatCurrency(totalEstimated)}
-                </Typography>
+
+                {isNegativated && (
+                  <Box
+                    p={1.5}
+                    borderRadius={1}
+                    sx={{
+                      backgroundColor: 'rgba(211, 47, 47, 0.08)',
+                      border: '1px solid',
+                      borderColor: 'error.light',
+                    }}
+                  >
+                    <Typography
+                      variant="caption"
+                      color="error.main"
+                      fontWeight={700}
+                      textAlign="center"
+                      display="block"
+                    >
+                      ⚠️ ATENÇÃO: Seu saldo ficará negativo. Você ficará devendo
+                      à bolsa e poderá estar sujeito a multas.
+                    </Typography>
+                  </Box>
+                )}
               </Box>
             </Grid>
           </Grid>

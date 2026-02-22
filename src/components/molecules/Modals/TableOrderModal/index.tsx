@@ -97,6 +97,7 @@ export const TableOrderModal = ({ order }: { order: Order }) => {
         }}
       >
         <DialogTitle
+          component={'div'}
           sx={{ display: 'flex', alignItems: 'center', gap: 1.5, pb: 1 }}
         >
           <WarningAmberRoundedIcon color="error" />
