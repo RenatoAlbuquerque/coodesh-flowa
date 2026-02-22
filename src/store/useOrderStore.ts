@@ -3,6 +3,7 @@ import type { Order, AvailableAsset } from '../@types/api';
 import { orderService } from '../services/orderService';
 import { calculateOrderExecution } from '../api/engine/calculateOrderExecution';
 import { toast } from 'react-toastify';
+import { useOrderFilters } from './useOrderFilters';
 
 interface OrderState {
   orders: Order[];
@@ -37,7 +38,10 @@ export const useOrderStore = create<OrderState>((set, get) => ({
   getOrders: async () => {
     set({ isLoading: true, error: null });
     try {
-      const orders = await orderService.getAll();
+      const currentFilters = useOrderFilters.getState().filters;
+
+      const orders = await orderService.getAll(currentFilters);
+
       set({ orders, isLoading: false });
     } catch (err) {
       set({

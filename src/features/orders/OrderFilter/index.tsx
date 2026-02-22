@@ -17,6 +17,7 @@ import { DatePicker } from '../../../components/atoms/Datepicker';
 import { orderFilterSchema, type OrderFilterData } from './helperOrderFilter';
 import { useOrderFilters } from '../../../store/useOrderFilters';
 import { AutocompleteAvailableTickets } from '../../../components/atoms/Autocomplete/AutocompleteAvailableTickets';
+import { useOrderStore } from '../../../store/useOrderStore';
 
 export const OrderFilter = () => {
   const {
@@ -44,13 +45,19 @@ export const OrderFilter = () => {
     },
   });
 
-  const onFilter = (data: OrderFilterData) => {
+  const onFilter = async (data: OrderFilterData) => {
     setFilters(data);
+
+    const { getOrders } = useOrderStore.getState();
+    await getOrders();
   };
 
-  const handleClear = () => {
+  const handleClear = async () => {
     reset();
     resetStore();
+
+    const { getOrders } = useOrderStore.getState();
+    await getOrders();
   };
 
   const autocompletePaperStyle = {

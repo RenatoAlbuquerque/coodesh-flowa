@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { OrdersPage } from '../features/orders';
 import { orderService } from '../services/orderService';
 import { useOrderStore } from '../store/useOrderStore';
+import { useOrderFilters } from '../store/useOrderFilters';
 
 export const Route = createFileRoute('/orders')({
   beforeLoad: () => {
@@ -10,22 +11,20 @@ export const Route = createFileRoute('/orders')({
 
   loader: async () => {
     try {
+      const filters = useOrderFilters.getState().filters;
+
       const [orders, assets] = await Promise.all([
-        orderService.getAll(),
+        orderService.getAll(filters),
         orderService.availableAssets(),
       ]);
 
       const store = useOrderStore.getState();
       store.setOrders(orders);
-
-      if ('setAvailableAssets' in store) {
-        store.setAvailableAssets(assets);
-      }
+      store.setAvailableAssets(assets);
 
       return { orders, assets };
-    } catch (error) {
-      console.error(error);
-      throw new Error('Não foi possível conectar ao servidor de dados.');
+    } catch {
+      throw new Error('Falha ao carregar dados iniciais');
     }
   },
 

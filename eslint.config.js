@@ -19,6 +19,6 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
-    ignores: ["dist", "node_modules", ".next", "out"],
+    ignores: ["dist", "node_modules", ".next", "out", "src/routeTree.gen.ts"],
   },
 ])
