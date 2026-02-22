@@ -5,6 +5,7 @@ interface HistoryFiltersStore {
   filters: HistoryFilterData;
   setFilters: (filters: HistoryFilterData) => void;
   resetFilters: () => void;
+  setPagination: (page: number, pageSize: number) => void;
 }
 
 const initialFilters: HistoryFilterData = {
@@ -13,10 +14,19 @@ const initialFilters: HistoryFilterData = {
   eventType: null,
   startDate: null,
   endDate: null,
+  _page: 1,
+  _per_page: 5,
 };
 
 export const useHistoryFilters = create<HistoryFiltersStore>((set) => ({
   filters: initialFilters,
-  setFilters: (newFilters) => set({ filters: newFilters }),
+  setFilters: (newFilters) =>
+    set({
+      filters: { ...newFilters, _page: 1, _per_page: 5 },
+    }),
+  setPagination: (page: number, pageSize: number) =>
+    set((state) => ({
+      filters: { ...state.filters, _page: page, _per_page: pageSize },
+    })),
   resetFilters: () => set({ filters: initialFilters }),
 }));

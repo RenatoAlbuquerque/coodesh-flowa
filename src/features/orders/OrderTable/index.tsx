@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import { orderColumns } from './orderColumns';
 import { OrderHistoryTimelineModal } from '../../../components/molecules/Modals/OrderHistoryTimeLineModal';
 import { useOrderFilters } from '../../../store/useOrderFilters';
+import { toast } from 'react-toastify';
 
 export const OrderTable = ({ data }: { data: IResponseOrders }) => {
   const filters = useOrderFilters((state) => state.filters);
@@ -17,15 +18,18 @@ export const OrderTable = ({ data }: { data: IResponseOrders }) => {
   const handleViewHistory = useCallback(async (order: Order) => {
     setSelectedOrder(order);
     try {
-      const results = await historyService.getAll({ orderId: order.id });
+      const response = await historyService.getAll({ orderId: order.id });
+
+      const results = Array.isArray(response) ? response : response.data;
+
       const sorted = results.sort((a, b) =>
         dayjs(b.timestamp).diff(dayjs(a.timestamp)),
       );
 
       setOrderHistory(sorted);
       setModalOpen(true);
-    } catch (err) {
-      console.error('Erro ao carregar linha do tempo', err);
+    } catch {
+      toast.error('Erro ao carregar linha do tempo');
     }
   }, []);
 

@@ -14,14 +14,13 @@ import { EVENT_OPTIONS } from '../../../api/options';
 import { getUniqueValues } from '../../../utils/filterAttributes';
 import { DatePicker } from '../../../components/atoms/Datepicker';
 import { AutocompleteAvailableTickets } from '../../../components/atoms/Autocomplete/AutocompleteAvailableTickets';
-import type { OrderFilterData } from '../../orders/OrderFilter/helperOrderFilter';
 import {
   historyFilterSchema,
   type HistoryFilterData,
 } from './helperHistoryFilter';
 import { useHistoryFilters } from '../../../store/useHistoryFilter';
 import { Route } from '../../../routes/history';
-import { useHistoryStore } from '../../../store/useHistoryStore';
+import { useCallback } from 'react';
 
 export const HistoryFilter = () => {
   const {
@@ -49,19 +48,24 @@ export const HistoryFilter = () => {
     },
   });
 
-  const onFilter = async (data: OrderFilterData) => {
-    setFilters(data);
-
-    const { getHistory } = useHistoryStore.getState();
-    await getHistory();
-  };
+  const onFilter = useCallback(
+    async (data: HistoryFilterData) => {
+      setFilters(data);
+    },
+    [setFilters],
+  );
 
   const handleClear = async () => {
-    reset();
-    resetStore();
+    const filtersAtMoment = useHistoryFilters.getState().filters;
+    const hasActiveFilters = Object.values(filtersAtMoment).some(
+      (value) => value !== '' && value !== null && value !== undefined,
+    );
 
-    const { getHistory } = useHistoryStore.getState();
-    await getHistory();
+    reset();
+
+    if (hasActiveFilters) {
+      resetStore();
+    }
   };
 
   const autocompletePaperStyle = {

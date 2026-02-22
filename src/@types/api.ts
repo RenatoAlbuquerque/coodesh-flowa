@@ -30,6 +30,16 @@ export interface Order {
   createdAt: string;
 }
 
+export interface IResponseHistory {
+  data: OrderHistory[];
+  first: number;
+  items: number;
+  last: number;
+  next: number;
+  pages: number;
+  prev?: number;
+}
+
 export interface OrderHistory {
   id: string;
   orderId: string;

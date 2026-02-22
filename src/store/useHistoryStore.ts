@@ -1,18 +1,18 @@
 import { create } from 'zustand';
-import type { OrderHistory } from '../@types/api';
+import type { IResponseHistory } from '../@types/api';
 import { useHistoryFilters } from './useHistoryFilter';
 import { historyService } from '../services/historyService';
 
 interface HistoryState {
-  ordersHistory: OrderHistory[];
+  ordersHistory: IResponseHistory;
   isLoading: boolean;
   error: string | null;
-  setHistory: (orders: OrderHistory[]) => void;
+  setHistory: (orders: IResponseHistory) => void;
   getHistory: () => Promise<void>;
 }
 
 export const useHistoryStore = create<HistoryState>((set) => ({
-  ordersHistory: [],
+  ordersHistory: { data: [], items: 0, first: 0, last: 0, next: 0, pages: 0 },
   availableAssets: [],
   isLoading: false,
   error: null,
@@ -20,13 +20,12 @@ export const useHistoryStore = create<HistoryState>((set) => ({
   setHistory: (ordersHistory) => set({ ordersHistory }),
 
   getHistory: async () => {
+    const currentFilters = useHistoryFilters.getState().filters;
     set({ isLoading: true, error: null });
     try {
-      const currentFilters = useHistoryFilters.getState().filters;
+      const response = await historyService.getAll(currentFilters);
 
-      const ordersHistory = await historyService.getAll(currentFilters);
-
-      set({ ordersHistory, isLoading: false });
+      set({ ordersHistory: response as IResponseHistory, isLoading: false });
     } catch (err) {
       set({
         error:

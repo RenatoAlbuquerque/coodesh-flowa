@@ -8,6 +8,8 @@ export const historyFilterSchema = z
     eventType: z.string().nullable().optional(),
     startDate: z.any().nullable().optional(),
     endDate: z.any().nullable().optional(),
+    _page: z.number().nullable().optional(),
+    _per_page: z.number().nullable().optional(),
   })
   .refine(
     (data) => {
