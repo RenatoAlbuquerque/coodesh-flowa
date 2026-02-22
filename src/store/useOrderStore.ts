@@ -33,7 +33,7 @@ interface OrderState {
   updateDashboardBalance: (
     value: number,
     type: 'COMPRA' | 'VENDA' | 'CANCELAMENTO_COMPRA',
-  ) => void;
+  ) => Promise<void>;
 }
 
 export const useOrderStore = create<OrderState>((set, get) => ({
@@ -61,7 +61,18 @@ export const useOrderStore = create<OrderState>((set, get) => ({
     try {
       const response = await orderService.getAll(currentFilters);
 
-      set({ orders: response, isLoading: false });
+      const ordersData = Array.isArray(response)
+        ? {
+            data: response,
+            items: response.length,
+            first: 0,
+            last: 0,
+            next: 0,
+            pages: 0,
+          }
+        : response;
+
+      set({ orders: ordersData, isLoading: false });
     } catch (err) {
       set({
         error: err instanceof Error ? err.message : 'Erro ao carregar ordens',
@@ -135,7 +146,19 @@ export const useOrderStore = create<OrderState>((set, get) => ({
       }
 
       const freshOrders = await orderService.getAll(currentFilters);
-      set({ orders: freshOrders });
+
+      const ordersData = Array.isArray(freshOrders)
+        ? {
+            data: freshOrders,
+            items: freshOrders.length,
+            first: 0,
+            last: 0,
+            next: 0,
+            pages: 0,
+          }
+        : freshOrders;
+
+      set({ orders: ordersData, isLoading: false });
     } catch (err) {
       toast.error('❌ Falha ao conectar com o servidor.');
       set({ error: 'Falha ao processar ordem no servidor.' });
@@ -172,7 +195,19 @@ export const useOrderStore = create<OrderState>((set, get) => ({
       });
 
       const freshOrders = await orderService.getAll(currentFilters);
-      set({ orders: freshOrders, isLoading: false });
+
+      const ordersData = Array.isArray(freshOrders)
+        ? {
+            data: freshOrders,
+            items: freshOrders.length,
+            first: 0,
+            last: 0,
+            next: 0,
+            pages: 0,
+          }
+        : freshOrders;
+
+      set({ orders: ordersData, isLoading: false });
     } catch (err) {
       set({ error: 'Erro ao cancelar a ordem.', isLoading: false });
       console.error(err);

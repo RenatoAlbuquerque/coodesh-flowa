@@ -3,6 +3,7 @@ import { OrdersPage } from '../features/orders';
 import { orderService } from '../services/orderService';
 import { useOrderStore } from '../store/useOrderStore';
 import { useOrderFilters } from '../store/useOrderFilters';
+import type { IResponseOrders } from '../@types/api';
 
 export const Route = createFileRoute('/orders')({
   beforeLoad: () => {
@@ -19,7 +20,7 @@ export const Route = createFileRoute('/orders')({
       ]);
 
       const store = useOrderStore.getState();
-      store.setOrders(orders);
+      store.setOrders(orders as IResponseOrders);
       store.setAvailableAssets(assets);
 
       return { orders, assets };

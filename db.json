@@ -1,8 +1,8 @@
 {
   "dashboard_stats": {
     "patrimonio_total": 10000,
-    "saldo_disponivel": 126,
-    "valor_investido": 9874,
+    "saldo_disponivel": 56,
+    "valor_investido": 9944,
     "rentabilidade_mes": 150.5,
     "variacao_diaria_percent": 1.2,
     "evolucao_patrimonial": [
@@ -116,16 +116,16 @@
       "price": 65.5,
       "currentPrice": 62,
       "quantity": 5,
-      "remainingQuantity": 2,
-      "status": "Parcial",
+      "remainingQuantity": 0,
+      "status": "Cancelada",
       "createdAt": "2026-02-22T09:00:00Z"
     },
     {
       "id": "ORD-6001",
       "instrument": "PETR4",
       "side": "VENDA",
-      "price": 35.00,
-      "currentPrice": 32.00,
+      "price": 35,
+      "currentPrice": 32,
       "quantity": 50,
       "remainingQuantity": 50,
       "status": "Aberta",
@@ -135,8 +135,8 @@
       "id": "ORD-6002",
       "instrument": "WEGE3",
       "side": "VENDA",
-      "price": 44.50,
-      "currentPrice": 42.00,
+      "price": 44.5,
+      "currentPrice": 42,
       "quantity": 10,
       "remainingQuantity": 10,
       "status": "Aberta",
@@ -146,8 +146,8 @@
       "id": "ORD-6003",
       "instrument": "VALE3",
       "side": "VENDA",
-      "price": 68.00,
-      "currentPrice": 62.00,
+      "price": 68,
+      "currentPrice": 62,
       "quantity": 100,
       "remainingQuantity": 100,
       "status": "Aberta",
@@ -157,8 +157,8 @@
       "id": "ORD-6004",
       "instrument": "ITUB4",
       "side": "VENDA",
-      "price": 33.20,
-      "currentPrice": 30.00,
+      "price": 33.2,
+      "currentPrice": 30,
       "quantity": 30,
       "remainingQuantity": 30,
       "status": "Aberta",
@@ -168,12 +168,23 @@
       "id": "ORD-6005",
       "instrument": "PETR4",
       "side": "VENDA",
-      "price": 31.50,
-      "currentPrice": 32.00,
+      "price": 31.5,
+      "currentPrice": 32,
       "quantity": 15,
       "remainingQuantity": 15,
       "status": "Aberta",
       "createdAt": "2026-02-22T16:20:00.000Z"
+    },
+    {
+      "id": "ORD-3642",
+      "instrument": "VALE3",
+      "side": "COMPRA",
+      "price": 70,
+      "quantity": 1,
+      "status": "Executada",
+      "remainingQuantity": 0,
+      "createdAt": "2026-02-22T19:52:40.216Z",
+      "currentPrice": 70
     }
   ],
   "history": [
@@ -221,6 +232,33 @@
       "details": "Executado 15 de 20 @ R$ 200,00",
       "origin": "Sistema de Matching",
       "timestamp": "2026-02-22T17:41:11Z"
+    },
+    {
+      "id": "b60a",
+      "orderId": "ORD-3642",
+      "instrument": "VALE3",
+      "eventType": "Execução Total",
+      "details": "COMPRA de 1 @ R$ 70",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-22T19:52:40.216Z"
+    },
+    {
+      "id": "7dc8",
+      "orderId": "ORD-2001",
+      "instrument": "VALE3",
+      "eventType": "Execução Parcial",
+      "details": "Execução contra ORD-3642",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-22T19:52:40.216Z"
+    },
+    {
+      "id": "e401",
+      "orderId": "ORD-2001",
+      "instrument": "VALE3",
+      "eventType": "Cancelamento",
+      "details": "Cancelamento manual da ordem ORD-2001",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-22T19:53:17.256Z"
     }
   ],
   "available_assets": [

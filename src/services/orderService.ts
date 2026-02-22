@@ -10,7 +10,9 @@ import { cleanParams } from '../utils/filterAttributes';
 import dayjs from 'dayjs';
 
 export const orderService = {
-  getAll: async (filters?: OrderFilterData): Promise<IResponseOrders> => {
+  getAll: async (
+    filters?: OrderFilterData,
+  ): Promise<IResponseOrders | Order[]> => {
     const cleaned = filters ? cleanParams(filters) : {};
 
     const { orderId, date, ...rest } = cleaned;
@@ -23,7 +25,9 @@ export const orderService = {
       params.createdAt_gte = dayjs(date).startOf('day').toISOString();
       params.createdAt_lte = dayjs(date).endOf('day').toISOString();
     }
-    const { data } = await api.get<IResponseOrders>('/orders', { params });
+    const { data } = await api.get<IResponseOrders | Order[]>('/orders', {
+      params,
+    });
     return data;
   },
 
