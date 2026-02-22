@@ -23,7 +23,7 @@ export const useHistoryStore = create<HistoryState>((set) => ({
     const currentFilters = useHistoryFilters.getState().filters;
     set({ isLoading: true, error: null });
     try {
-      const response = await historyService.getAll(currentFilters);
+      const response = await historyService.getAllHistory(currentFilters);
 
       set({ ordersHistory: response as IResponseHistory, isLoading: false });
     } catch (err) {

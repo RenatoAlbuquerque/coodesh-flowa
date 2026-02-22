@@ -4,9 +4,11 @@ import Typography from '@mui/material/Typography';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { useState } from 'react';
 import { NewOrderModal } from '../../../components/molecules/Modals/NewOrderModal';
+import { Route } from '../../../routes/orders';
 
 export const OrderTitle = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { assets } = Route.useLoaderData();
 
   return (
     <>
@@ -36,7 +38,11 @@ export const OrderTitle = () => {
           </Typography>
         </Button>
       </Box>
-      <NewOrderModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <NewOrderModal
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        availableAssets={assets}
+      />
     </>
   );
 };

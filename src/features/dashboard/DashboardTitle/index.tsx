@@ -6,13 +6,21 @@ import { useTheme } from '@mui/material';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { NewOrderModal } from '../../../components/molecules/Modals/NewOrderModal';
 import { useState } from 'react';
+import { useRouter } from '@tanstack/react-router';
+import { Route } from '../../../routes';
 
 export const DashboardTitle = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const useRouterHook = useRouter();
   const {
     palette: { common, text },
   } = useTheme();
+  const { assets } = Route.useLoaderData();
+
+  const handleOrderSuccess = () => {
+    useRouterHook.invalidate();
+  };
+
   return (
     <Box
       display={'flex'}
@@ -61,7 +69,12 @@ export const DashboardTitle = () => {
         </Button>
       </Box>
 
-      <NewOrderModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <NewOrderModal
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSuccess={handleOrderSuccess}
+        availableAssets={assets}
+      />
     </Box>
   );
 };

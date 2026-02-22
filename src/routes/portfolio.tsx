@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { PortfolioPage } from '../features/portfolio';
 import { portfolioService } from '../services/portfolioService';
 import { orderService } from '../services/orderService';
+import { assetsService } from '../services/assetsService';
 
 export const Route = createFileRoute('/portfolio')({
   beforeLoad: () => {
@@ -12,11 +13,13 @@ export const Route = createFileRoute('/portfolio')({
     try {
       const [stats, ordersResponse, assets] = await Promise.all([
         portfolioService.getDashboardStats(),
-        orderService.getAll({ _per_page: 1000, _page: 1 }),
-        orderService.availableAssets(),
+        orderService.getAllOrders({ _per_page: 1000, _page: 1 }),
+        assetsService.availableAssets(),
       ]);
 
-      const orders = ordersResponse.data;
+      const orders = Array.isArray(ordersResponse)
+        ? ordersResponse
+        : ordersResponse.data;
 
       const allocation = portfolioService.getAllocationData(
         stats,

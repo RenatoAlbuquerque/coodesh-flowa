@@ -18,7 +18,9 @@ export const OrderTable = ({ data }: { data: IResponseOrders }) => {
   const handleViewHistory = useCallback(async (order: Order) => {
     setSelectedOrder(order);
     try {
-      const response = await historyService.getAll({ orderId: order.id });
+      const response = await historyService.getAllHistory({
+        orderId: order.id,
+      });
 
       const results = Array.isArray(response) ? response : response.data;
 

@@ -15,7 +15,7 @@ export const Route = createFileRoute('/orders')({
       const filters = useOrderFilters.getState().filters;
 
       const [orders, assets] = await Promise.all([
-        orderService.getAll(filters),
+        orderService.getAllOrders(filters),
         orderService.availableAssets(),
       ]);
 

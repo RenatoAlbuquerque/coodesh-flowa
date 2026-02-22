@@ -5,6 +5,7 @@ import { ContainerCenter } from '../../components/templates/ContainerCenter';
 import { DashboardTitle } from './DashboardTitle';
 import { DashboardStats } from './DashboardStats';
 import { DashboardGraphics } from './DashboardGraphics';
+import { DashboardTables } from './DashboardTables';
 
 export const DashboardPage = () => {
   return (
@@ -16,6 +17,7 @@ export const DashboardPage = () => {
           <DashboardTitle />
           <DashboardStats />
           <DashboardGraphics />
+          <DashboardTables />
         </ContainerCenter>
       </Box>
     </Box>

@@ -4,7 +4,7 @@ import { ChartDonutPortfolio } from './ChartDonutPortfolio';
 
 export const DashboardGraphics = () => {
   return (
-    <Grid container spacing={3} width="100%">
+    <Grid container spacing={3} width="100%" pb="26px">
       <Grid size={{ xs: 12, lg: 8 }}>
         <Paper
           sx={{

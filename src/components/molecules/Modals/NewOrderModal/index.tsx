@@ -29,14 +29,23 @@ import { AutocompleteAvailableTickets } from '../../../atoms/Autocomplete/Autoco
 import { getUniqueValues } from '../../../../utils/filterAttributes';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
+import type { AvailableAsset } from '../../../../@types/api';
 
 interface NewOrderModalProps {
   open: boolean;
   onClose: () => void;
+  onSuccess?: () => void;
+  availableAssets: AvailableAsset[];
 }
 
-export const NewOrderModal = ({ open, onClose }: NewOrderModalProps) => {
-  const { createOrder, availableAssets, stats, getStats } = useOrderStore();
+export const NewOrderModal = ({
+  open,
+  onClose,
+  onSuccess,
+  availableAssets,
+}: NewOrderModalProps) => {
+  const { createOrder, stats, getStats } = useOrderStore();
+
   const INSTRUMENT_OPTIONS = getUniqueValues(availableAssets, 'symbol');
   const {
     palette: { common },
@@ -88,6 +97,7 @@ export const NewOrderModal = ({ open, onClose }: NewOrderModalProps) => {
         error: 'Falha na comunicação 🤯',
       },
     );
+    onSuccess?.();
     reset();
     onClose();
   };

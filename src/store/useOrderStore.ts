@@ -7,6 +7,7 @@ import { useOrderFilters } from './useOrderFilters';
 import { api } from '../services/axios';
 import { portfolioService } from '../services/portfolioService';
 import type { IPortfolioStatusResponse } from '../@types/portfolio';
+import { assetsService } from '../services/assetsService';
 
 interface OrderState {
   orders: IResponseOrders;
@@ -59,7 +60,7 @@ export const useOrderStore = create<OrderState>((set, get) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const response = await orderService.getAll(currentFilters);
+      const response = await orderService.getAllOrders(currentFilters);
 
       const ordersData = Array.isArray(response)
         ? {
@@ -83,7 +84,7 @@ export const useOrderStore = create<OrderState>((set, get) => ({
 
   getAvailableAssets: async () => {
     try {
-      const data = await orderService.availableAssets();
+      const data = await assetsService.availableAssets();
       set({ availableAssets: data });
     } catch (err) {
       console.error('Erro ao buscar ativos disponíveis:', err);
@@ -94,8 +95,8 @@ export const useOrderStore = create<OrderState>((set, get) => ({
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const currentFilters = useOrderFilters.getState().filters;
 
-    const { orders } = get();
-    const result = calculateOrderExecution(formData, orders.data);
+    const orders = await orderService.getAllOrders();
+    const result = calculateOrderExecution(formData, orders as Order[]);
     const orderId = `ORD-${Math.floor(Math.random() * 9000 + 1000)}`;
     const now = new Date().toISOString();
 
@@ -112,7 +113,32 @@ export const useOrderStore = create<OrderState>((set, get) => ({
       }
 
       const orderValue = formData.quantity * formData.price;
-      await get().updateDashboardBalance(orderValue, formData.side);
+
+      if (formData.side === 'COMPRA') {
+        await get().updateDashboardBalance(orderValue, 'COMPRA');
+      } else if (
+        formData.side === 'VENDA' &&
+        (result.status === 'Executada' || result.status === 'Parcial')
+      ) {
+        const executedQty = formData.quantity - result.remainingQuantity;
+        const executedValue = executedQty * formData.price;
+        if (executedValue > 0) {
+          await get().updateDashboardBalance(executedValue, 'VENDA');
+        }
+      }
+
+      if (result.hasMatch && result.match) {
+        if (result.match.side === 'VENDA') {
+          const executedQty =
+            result.match.remainingQuantity -
+            result.counterpartUpdate.remainingQuantity;
+          const executedValue = executedQty * result.match.price;
+
+          if (executedValue > 0) {
+            await get().updateDashboardBalance(executedValue, 'VENDA');
+          }
+        }
+      }
 
       await orderService.logEvent({
         orderId,
@@ -145,7 +171,7 @@ export const useOrderStore = create<OrderState>((set, get) => ({
         toast.info(`Match instantâneo em ${formData.instrument}!`);
       }
 
-      const freshOrders = await orderService.getAll(currentFilters);
+      const freshOrders = await orderService.getAllOrders(currentFilters);
 
       const ordersData = Array.isArray(freshOrders)
         ? {
@@ -194,7 +220,7 @@ export const useOrderStore = create<OrderState>((set, get) => ({
         timestamp: new Date().toISOString(),
       });
 
-      const freshOrders = await orderService.getAll(currentFilters);
+      const freshOrders = await orderService.getAllOrders(currentFilters);
 
       const ordersData = Array.isArray(freshOrders)
         ? {

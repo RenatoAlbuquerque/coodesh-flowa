@@ -8,7 +8,7 @@ import isBetween from 'dayjs/plugin/isBetween';
 dayjs.extend(isBetween);
 
 export const historyService = {
-  getAll: async (
+  getAllHistory: async (
     filters?: HistoryFilterData,
   ): Promise<IResponseHistory | OrderHistory[]> => {
     const cleaned = filters ? cleanParams(filters) : {};

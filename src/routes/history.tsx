@@ -1,10 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { HistoryPage } from '../features/history';
-import { orderService } from '../services/orderService';
 import { useOrderStore } from '../store/useOrderStore';
 import { useHistoryStore } from '../store/useHistoryStore';
 import { useHistoryFilters } from '../store/useHistoryFilter';
 import { historyService } from '../services/historyService';
+import { assetsService } from '../services/assetsService';
+import type { IResponseHistory } from '../@types/api';
 
 export const Route = createFileRoute('/history')({
   beforeLoad: () => {
@@ -18,10 +19,10 @@ export const Route = createFileRoute('/history')({
 
       const assetsPromise =
         orderStore.availableAssets.length === 0
-          ? orderService.availableAssets()
+          ? assetsService.availableAssets()
           : Promise.resolve(orderStore.availableAssets);
 
-      const historyPromise = historyService.getAll(filters);
+      const historyPromise = historyService.getAllHistory(filters);
 
       const [assets, historyList] = await Promise.all([
         assetsPromise,
@@ -29,7 +30,7 @@ export const Route = createFileRoute('/history')({
       ]);
 
       orderStore.setAvailableAssets(assets);
-      historyStore.setHistory(historyList);
+      historyStore.setHistory(historyList as IResponseHistory);
 
       return { assets, historyList };
     } catch (error) {
