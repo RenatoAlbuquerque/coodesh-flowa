@@ -7,6 +7,15 @@ export type EventType =
   | 'Execução Total'
   | 'Cancelamento';
 
+export interface IResponseOrders {
+  data: Order[];
+  first: number;
+  items: number;
+  last: number;
+  next: number;
+  pages: number;
+  prev?: number;
+}
 export interface Order {
   id: string;
   instrument: string;

@@ -7,6 +7,8 @@ export const orderFilterSchema = z
     side: z.string().nullable().optional(),
     status: z.string().nullable().optional(),
     date: z.any().nullable().optional(),
+    _page: z.number().nullable().optional(),
+    _per_page: z.number().nullable().optional(),
   })
   .refine(
     (data) => {

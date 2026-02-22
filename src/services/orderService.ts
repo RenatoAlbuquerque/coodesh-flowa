@@ -1,11 +1,16 @@
 import { api } from './axios';
-import type { AvailableAsset, Order, OrderHistory } from '../@types/api';
+import type {
+  AvailableAsset,
+  IResponseOrders,
+  Order,
+  OrderHistory,
+} from '../@types/api';
 import type { OrderFilterData } from '../features/orders/OrderFilter/helperOrderFilter';
 import { cleanParams } from '../utils/filterAttributes';
 import dayjs from 'dayjs';
 
 export const orderService = {
-  getAll: async (filters?: OrderFilterData): Promise<Order[]> => {
+  getAll: async (filters?: OrderFilterData): Promise<IResponseOrders> => {
     const cleaned = filters ? cleanParams(filters) : {};
 
     const { orderId, date, ...rest } = cleaned;
@@ -18,7 +23,7 @@ export const orderService = {
       params.createdAt_gte = dayjs(date).startOf('day').toISOString();
       params.createdAt_lte = dayjs(date).endOf('day').toISOString();
     }
-    const { data } = await api.get<Order[]>('/orders', { params });
+    const { data } = await api.get<IResponseOrders>('/orders', { params });
     return data;
   },
 

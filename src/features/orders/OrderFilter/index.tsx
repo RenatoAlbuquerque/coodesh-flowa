@@ -19,7 +19,6 @@ import { DatePicker } from '../../../components/atoms/Datepicker';
 import { orderFilterSchema, type OrderFilterData } from './helperOrderFilter';
 import { useOrderFilters } from '../../../store/useOrderFilters';
 import { AutocompleteAvailableTickets } from '../../../components/atoms/Autocomplete/AutocompleteAvailableTickets';
-import { useOrderStore } from '../../../store/useOrderStore';
 
 const AUTOCOMPLETE_PAPER_STYLE = {
   sx: {
@@ -74,8 +73,6 @@ export const OrderFilter = () => {
   const onFilter = useCallback(
     async (data: OrderFilterData) => {
       setFilters(data);
-      const { getOrders } = useOrderStore.getState();
-      await getOrders();
     },
     [setFilters],
   );
@@ -90,8 +87,6 @@ export const OrderFilter = () => {
 
     if (hasActiveFilters) {
       resetStore();
-      const { getOrders } = useOrderStore.getState();
-      await getOrders();
     }
   }, [reset, resetStore]);
 
@@ -142,7 +137,6 @@ export const OrderFilter = () => {
         />
       </Box>
 
-      {/* Instrumento */}
       <Box flex={1}>
         <Typography
           color="text.disabled"
@@ -161,7 +155,6 @@ export const OrderFilter = () => {
         />
       </Box>
 
-      {/* Lado */}
       <Box flex={1} maxWidth="160px">
         <Typography
           color="text.disabled"
@@ -220,7 +213,6 @@ export const OrderFilter = () => {
         />
       </Box>
 
-      {/* Data */}
       <Box flex={1} maxWidth="160px">
         <Typography
           color="text.disabled"

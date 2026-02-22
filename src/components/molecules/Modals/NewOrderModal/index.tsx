@@ -18,6 +18,7 @@ import {
   Box,
   Grid,
   useTheme,
+  FormHelperText,
 } from '@mui/material';
 import { useOrderStore } from '../../../../store/useOrderStore';
 import { orderSchema } from './newOrderScheme';
@@ -120,7 +121,7 @@ export const NewOrderModal = ({ open, onClose }: NewOrderModalProps) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <DialogContent sx={{ px: 4, py: 2, position: 'relative' }}>
           <Grid container spacing={3}>
-            <Grid size={{ xs: 12 }}>
+            <Grid size={{ xs: 12 }} position={'relative'}>
               <Typography variant="body2" fontWeight={600} mb={1}>
                 Ativo Disponível
               </Typography>
@@ -129,7 +130,13 @@ export const NewOrderModal = ({ open, onClose }: NewOrderModalProps) => {
                 control={control}
                 options={INSTRUMENT_OPTIONS}
                 placeholder="Todos os ativos"
+                error={Boolean(errors.instrument?.message)}
               />
+              <FormHelperText
+                sx={{ position: 'absolute', bottom: 0, mb: -2.5, color: 'red' }}
+              >
+                {errors.instrument?.message}
+              </FormHelperText>
             </Grid>
 
             <Grid size={{ xs: 12 }}>
@@ -186,7 +193,7 @@ export const NewOrderModal = ({ open, onClose }: NewOrderModalProps) => {
               />
             </Grid>
 
-            <Grid size={{ xs: 12, sm: 6 }}>
+            <Grid size={{ xs: 12, sm: 6 }} position={'relative'}>
               <Controller
                 name="quantity"
                 control={control}
@@ -198,7 +205,6 @@ export const NewOrderModal = ({ open, onClose }: NewOrderModalProps) => {
                     type="number"
                     fullWidth
                     error={!!errors.quantity}
-                    helperText={errors.quantity?.message}
                     slotProps={{
                       htmlInput: {
                         min: 1,
@@ -218,9 +224,14 @@ export const NewOrderModal = ({ open, onClose }: NewOrderModalProps) => {
                   />
                 )}
               />
+              <FormHelperText
+                sx={{ position: 'absolute', bottom: 0, mb: -2.5, color: 'red' }}
+              >
+                {errors.quantity?.message}
+              </FormHelperText>
             </Grid>
 
-            <Grid size={{ xs: 12, sm: 6 }}>
+            <Grid size={{ xs: 12, sm: 6 }} position={'relative'}>
               <Controller
                 name="price"
                 control={control}
@@ -232,14 +243,11 @@ export const NewOrderModal = ({ open, onClose }: NewOrderModalProps) => {
                     type="number"
                     fullWidth
                     error={!!errors.price}
-                    helperText={errors.price?.message}
                     slotProps={{
                       htmlInput: {
-                        min: 0.01,
+                        min: 0,
                         step: 0.01,
-                        onKeyPress: (
-                          e: React.KeyboardEvent<HTMLDivElement>,
-                        ) => {
+                        onKeyPress: (e: React.KeyboardEvent) => {
                           if (['-', 'e', '+'].includes(e.key))
                             e.preventDefault();
                         },
@@ -251,14 +259,20 @@ export const NewOrderModal = ({ open, onClose }: NewOrderModalProps) => {
                         field.onChange('');
                         return;
                       }
+
                       if (value.includes('.') && value.split('.')[1].length > 2)
                         return;
-                      const valNum = Number(value);
-                      field.onChange(valNum <= 0 ? '' : valNum);
+
+                      field.onChange(value);
                     }}
                   />
                 )}
               />
+              <FormHelperText
+                sx={{ position: 'absolute', bottom: 0, mb: -2.5, color: 'red' }}
+              >
+                {errors.price?.message}
+              </FormHelperText>
             </Grid>
 
             <Grid size={{ xs: 12 }}>
@@ -295,7 +309,14 @@ export const NewOrderModal = ({ open, onClose }: NewOrderModalProps) => {
         <DialogActions
           sx={{ px: 4, pb: 4, pt: 1, gap: 1, position: 'relative' }}
         >
-          <Button onClick={onClose} color="inherit" sx={{ fontWeight: 600 }}>
+          <Button
+            onClick={() => {
+              onClose();
+              reset();
+            }}
+            color="inherit"
+            sx={{ fontWeight: 600 }}
+          >
             Cancelar
           </Button>
           <Button

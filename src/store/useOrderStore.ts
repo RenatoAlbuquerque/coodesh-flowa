@@ -1,17 +1,17 @@
 import { create } from 'zustand';
-import type { Order, AvailableAsset } from '../@types/api';
+import type { Order, AvailableAsset, IResponseOrders } from '../@types/api';
 import { orderService } from '../services/orderService';
 import { calculateOrderExecution } from '../api/engine/calculateOrderExecution';
 import { toast } from 'react-toastify';
 import { useOrderFilters } from './useOrderFilters';
 
 interface OrderState {
-  orders: Order[];
+  orders: IResponseOrders;
   availableAssets: AvailableAsset[];
   isLoading: boolean;
   error: string | null;
 
-  setOrders: (orders: Order[]) => void;
+  setOrders: (orders: IResponseOrders) => void;
   setAvailableAssets: (assets: AvailableAsset[]) => void;
 
   getOrders: () => Promise<void>;
@@ -26,7 +26,7 @@ interface OrderState {
 }
 
 export const useOrderStore = create<OrderState>((set, get) => ({
-  orders: [],
+  orders: { data: [], items: 0, first: 0, last: 0, next: 0, pages: 0 },
   availableAssets: [],
   isLoading: false,
   error: null,
@@ -36,13 +36,13 @@ export const useOrderStore = create<OrderState>((set, get) => ({
   setAvailableAssets: (assets) => set({ availableAssets: assets }),
 
   getOrders: async () => {
+    const currentFilters = useOrderFilters.getState().filters;
     set({ isLoading: true, error: null });
+
     try {
-      const currentFilters = useOrderFilters.getState().filters;
+      const response = await orderService.getAll(currentFilters);
 
-      const orders = await orderService.getAll(currentFilters);
-
-      set({ orders, isLoading: false });
+      set({ orders: response, isLoading: false });
     } catch (err) {
       set({
         error: err instanceof Error ? err.message : 'Erro ao carregar ordens',
@@ -62,9 +62,10 @@ export const useOrderStore = create<OrderState>((set, get) => ({
 
   createOrder: async (formData) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
+    const currentFilters = useOrderFilters.getState().filters;
 
     const { orders } = get();
-    const result = calculateOrderExecution(formData, orders);
+    const result = calculateOrderExecution(formData, orders.data);
     const orderId = `ORD-${Math.floor(Math.random() * 9000 + 1000)}`;
     const now = new Date().toISOString();
 
@@ -111,7 +112,7 @@ export const useOrderStore = create<OrderState>((set, get) => ({
         toast.info(`Match instantâneo em ${formData.instrument}!`);
       }
 
-      const freshOrders = await orderService.getAll();
+      const freshOrders = await orderService.getAll(currentFilters);
       set({ orders: freshOrders });
     } catch (err) {
       toast.error('❌ Falha ao conectar com o servidor.');
@@ -122,6 +123,7 @@ export const useOrderStore = create<OrderState>((set, get) => ({
 
   cancelOrder: async (order: Order) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
+    const currentFilters = useOrderFilters.getState().filters;
 
     if (order.status !== 'Aberta' && order.status !== 'Parcial') {
       set({ error: 'Apenas ordens abertas ou parciais podem ser canceladas.' });
@@ -141,7 +143,7 @@ export const useOrderStore = create<OrderState>((set, get) => ({
         timestamp: new Date().toISOString(),
       });
 
-      const freshOrders = await orderService.getAll();
+      const freshOrders = await orderService.getAll(currentFilters);
       set({ orders: freshOrders, isLoading: false });
     } catch (err) {
       set({ error: 'Erro ao cancelar a ordem.', isLoading: false });

@@ -39,7 +39,7 @@
       "price": 38.5,
       "currentPrice": 37.9,
       "quantity": 500,
-      "remainingQuantity": 200,
+      "remainingQuantity": 300,
       "status": "Parcial",
       "createdAt": "2026-02-16T10:30:00Z"
     },
@@ -163,6 +163,17 @@
       "remainingQuantity": 0,
       "createdAt": "2026-02-22T03:46:11.629Z",
       "currentPrice": 190
+    },
+    {
+      "id": "ORD-3543",
+      "instrument": "PETR4",
+      "side": "COMPRA",
+      "price": 40,
+      "quantity": 100,
+      "status": "Executada",
+      "remainingQuantity": 0,
+      "createdAt": "2026-02-22T13:37:18.449Z",
+      "currentPrice": 40
     }
   ],
   "history": [
@@ -189,7 +200,7 @@
       "orderId": "ORD-1002",
       "instrument": "PETR4",
       "eventType": "Execução Parcial",
-      "details": "Venda de 300 @ R$ 38,50",
+      "details": "Venda de 100 @ R$ 38,50",
       "origin": "Sistema de Matching",
       "timestamp": "2026-02-16T11:00:00Z"
     },
@@ -309,6 +320,33 @@
       "details": "Cancelamento manual da ordem ORD-1998",
       "origin": "Renato Abreu",
       "timestamp": "2026-02-22T03:48:27.647Z"
+    },
+    {
+      "id": "a453",
+      "orderId": "ORD-9914",
+      "instrument": "PETR4",
+      "eventType": "Execução Total",
+      "details": "COMPRA de 100 @ R$ 40",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-22T13:30:53.454Z"
+    },
+    {
+      "id": "0908",
+      "orderId": "ORD-3543",
+      "instrument": "PETR4",
+      "eventType": "Execução Total",
+      "details": "COMPRA de 100 @ R$ 40",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-22T13:37:18.449Z"
+    },
+    {
+      "id": "55e3",
+      "orderId": "ORD-1002",
+      "instrument": "PETR4",
+      "eventType": "Execução Parcial",
+      "details": "Execução contra ORD-3543",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-22T13:37:18.449Z"
     }
   ],
   "available_assets": [

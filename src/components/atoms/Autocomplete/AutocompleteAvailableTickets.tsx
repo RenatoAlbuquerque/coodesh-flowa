@@ -12,6 +12,7 @@ interface AssetAutocompleteProps<T extends FieldValues> {
   options: string[];
   placeholder?: string;
   label?: string;
+  error?: boolean;
 }
 
 export const AutocompleteAvailableTickets = <T extends FieldValues>({
@@ -20,6 +21,7 @@ export const AutocompleteAvailableTickets = <T extends FieldValues>({
   options,
   placeholder = 'Selecionar ativo',
   label,
+  error,
 }: AssetAutocompleteProps<T>) => {
   return (
     <Controller
@@ -34,6 +36,7 @@ export const AutocompleteAvailableTickets = <T extends FieldValues>({
           renderInput={(params) => (
             <TextField
               {...params}
+              error={error}
               label={label}
               size="small"
               placeholder={placeholder}

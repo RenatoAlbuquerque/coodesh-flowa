@@ -4,17 +4,28 @@ import UnfoldMoreOutlinedIcon from '@mui/icons-material/UnfoldMoreOutlined';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { ptBR } from '@mui/x-data-grid/locales';
+import { SkeletonLoadingTable } from '../Skeleton/SkeletonLoadingTable';
 
 interface DataTableProps<T> {
   rows: T[];
   columns: GridColDef[];
   onRowClick?: (arg: unknown) => void;
+  rowCount?: number;
+  page?: number;
+  pageSize?: number;
+  onPaginationModelChange?: (model: { page: number; pageSize: number }) => void;
+  loading?: boolean;
 }
 
 export const DataTable = <T extends Record<string, unknown>>({
   rows,
   columns,
   onRowClick,
+  rowCount = 0,
+  page = 0,
+  pageSize = 5,
+  onPaginationModelChange,
+  loading = false,
 }: DataTableProps<T>) => {
   const {
     palette: { primary, text, common },
@@ -52,6 +63,7 @@ export const DataTable = <T extends Record<string, unknown>>({
       />
 
       <DataGrid
+        loading={loading}
         onRowClick={onRowClick}
         autoHeight
         rows={rows}
@@ -60,7 +72,12 @@ export const DataTable = <T extends Record<string, unknown>>({
         initialState={{
           pagination: { paginationModel: { pageSize: 5 } },
         }}
+        paginationMode="server"
+        rowCount={rowCount}
+        paginationModel={{ page, pageSize }}
+        onPaginationModelChange={onPaginationModelChange}
         slots={{
+          loadingOverlay: () => <SkeletonLoadingTable pageSize={pageSize} />,
           noRowsOverlay: () => (
             <Stack height="100%" alignItems="center" justifyContent="center">
               <Typography variant="h2" color="text.secondary">

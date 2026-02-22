@@ -27,6 +27,7 @@ export const NavItems = () => {
     <Box display={'flex'} flexDirection={'column'} gap="6px" width="100%">
       {navList.map((item) => (
         <Button
+          fullWidth
           key={item.label}
           component={Link}
           to={item.route}
