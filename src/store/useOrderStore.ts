@@ -4,6 +4,9 @@ import { orderService } from '../services/orderService';
 import { calculateOrderExecution } from '../api/engine/calculateOrderExecution';
 import { toast } from 'react-toastify';
 import { useOrderFilters } from './useOrderFilters';
+import { api } from '../services/axios';
+import { portfolioService } from '../services/portfolioService';
+import type { IPortfolioStatusResponse } from '../@types/portfolio';
 
 interface OrderState {
   orders: IResponseOrders;
@@ -23,6 +26,14 @@ interface OrderState {
     >,
   ) => Promise<void>;
   cancelOrder: (order: Order) => Promise<void>;
+
+  stats: IPortfolioStatusResponse;
+  getStats: () => Promise<void>;
+
+  updateDashboardBalance: (
+    value: number,
+    type: 'COMPRA' | 'VENDA' | 'CANCELAMENTO_COMPRA',
+  ) => void;
 }
 
 export const useOrderStore = create<OrderState>((set, get) => ({
@@ -30,6 +41,14 @@ export const useOrderStore = create<OrderState>((set, get) => ({
   availableAssets: [],
   isLoading: false,
   error: null,
+  stats: {
+    evolucao_patrimonial: [],
+    patrimonio_total: 0,
+    rentabilidade_mes: 0,
+    saldo_disponivel: 0,
+    valor_investido: 0,
+    variacao_diaria_percent: 0,
+  },
 
   setOrders: (orders) => set({ orders }),
 
@@ -80,6 +99,9 @@ export const useOrderStore = create<OrderState>((set, get) => ({
           currentPrice: formData.price,
         });
       }
+
+      const orderValue = formData.quantity * formData.price;
+      await get().updateDashboardBalance(orderValue, formData.side);
 
       await orderService.logEvent({
         orderId,
@@ -134,6 +156,12 @@ export const useOrderStore = create<OrderState>((set, get) => ({
       set({ isLoading: true });
 
       await orderService.cancelOrder(order.id);
+
+      if (order.side === 'COMPRA') {
+        const refundValue = order.remainingQuantity * order.price;
+        await get().updateDashboardBalance(refundValue, 'CANCELAMENTO_COMPRA');
+      }
+
       await orderService.logEvent({
         orderId: order.id,
         instrument: order.instrument,
@@ -149,5 +177,40 @@ export const useOrderStore = create<OrderState>((set, get) => ({
       set({ error: 'Erro ao cancelar a ordem.', isLoading: false });
       console.error(err);
     }
+  },
+
+  updateDashboardBalance: async (
+    value: number,
+    type: 'COMPRA' | 'VENDA' | 'CANCELAMENTO_COMPRA',
+  ) => {
+    try {
+      const stats = await portfolioService.getDashboardStats();
+      let newSaldo = stats.saldo_disponivel;
+      let newInvestido = stats.valor_investido;
+
+      if (type === 'COMPRA') {
+        newSaldo -= value;
+        newInvestido += value;
+      } else if (type === 'VENDA') {
+        newSaldo += value;
+        newInvestido -= value;
+      } else if (type === 'CANCELAMENTO_COMPRA') {
+        newSaldo += value;
+        newInvestido -= value;
+      }
+
+      await api.patch('/dashboard_stats', {
+        saldo_disponivel: newSaldo,
+        valor_investido: newInvestido,
+        patrimonio_total: newSaldo + newInvestido,
+      });
+    } catch (err) {
+      console.error('Erro ao atualizar dashboard:', err);
+    }
+  },
+
+  getStats: async () => {
+    const data = await portfolioService.getDashboardStats();
+    set({ stats: data });
   },
 }));
