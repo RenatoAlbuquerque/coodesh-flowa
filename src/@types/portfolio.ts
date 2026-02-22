@@ -17,5 +17,10 @@ export interface IPortfolioStatusResponse {
   valor_investido: number;
   rentabilidade_mes: number;
   variacao_diaria_percent: number;
-  evolucao_patrimonial: { data: string; valor: number }[];
+  evolucao_patrimonial: IEvolutionPortfolio[];
+}
+
+export interface IEvolutionPortfolio {
+  data: string;
+  valor: number;
 }

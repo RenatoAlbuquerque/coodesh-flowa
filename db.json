@@ -7,6 +7,22 @@
     "variacao_diaria_percent": 1.2,
     "evolucao_patrimonial": [
       {
+        "data": "01 Dez",
+        "valor": 2000
+      },
+      {
+        "data": "15 Dez",
+        "valor": 3000
+      },
+      {
+        "data": "1 Jan",
+        "valor": 4500
+      },
+      {
+        "data": "15 Jan",
+        "valor": 6500
+      },
+      {
         "data": "01 Fev",
         "valor": 9500
       },
