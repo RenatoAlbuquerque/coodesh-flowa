@@ -16,13 +16,14 @@ import { getUniqueValues } from '../../../utils/filterAttributes';
 import { DatePicker } from '../../../components/atoms/Datepicker';
 import { orderFilterSchema, type OrderFilterData } from './helperOrderFilter';
 import { useOrderFilters } from '../../../store/useOrderFilters';
+import { AutocompleteAvailableTickets } from '../../../components/atoms/Autocomplete/AutocompleteAvailableTickets';
 
 export const OrderFilter = () => {
   const {
     palette: { text, primary },
   } = useTheme();
   const orders = Route.useLoaderData();
-  const INSTRUMENT_OPTIONS = getUniqueValues(orders, 'instrument');
+  const INSTRUMENT_OPTIONS = getUniqueValues(orders.assets, 'symbol');
 
   const setFilters = useOrderFilters((state) => state.setFilters);
   const resetStore = useOrderFilters((state) => state.resetFilters);
@@ -119,24 +120,11 @@ export const OrderFilter = () => {
         >
           Instrumento
         </Typography>
-        <Controller
+        <AutocompleteAvailableTickets
           name="instrument"
           control={control}
-          render={({ field }) => (
-            <Autocomplete
-              {...field}
-              options={INSTRUMENT_OPTIONS}
-              onChange={(_, value) => field.onChange(value)}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  size="small"
-                  placeholder="Todos os ativos"
-                />
-              )}
-              slotProps={{ paper: autocompletePaperStyle }}
-            />
-          )}
+          options={INSTRUMENT_OPTIONS}
+          placeholder="Todos os ativos"
         />
       </Box>
 

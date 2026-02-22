@@ -5,8 +5,8 @@ export type AssetType = 'Ações' | 'FIIs' | 'Renda Fixa';
 export interface Order {
   id: string;
   instrument: string;
-  category: string;
-  type: AssetType;
+  category?: string;
+  type?: AssetType;
   side: OrderSide;
   price: number;
   currentPrice: number;
@@ -48,4 +48,11 @@ export interface Database {
   orders: Order[];
   history: OrderHistory[];
   dashboard_stats: DashboardStats;
+  available_assets: AvailableAsset[];
+}
+
+export interface AvailableAsset {
+  symbol: string;
+  name: string;
+  type: 'Ações' | 'FIIs' | 'Renda Fixa';
 }

@@ -13,7 +13,7 @@ export const ContainerCenter = ({
       alignItems={'center'}
       justifyContent={'center'}
     >
-      <Box width={'100%'} maxWidth={'1080px'} px="10px">
+      <Box width={'100%'} maxWidth={'1080px'} px="10px" overflow={'hidden'}>
         {children}
       </Box>
     </Box>
