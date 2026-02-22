@@ -139,7 +139,7 @@
       "eventType": "Execução Total",
       "details": "Compra de 500 @ R$ 32,10",
       "origin": "Sistema de Matching",
-      "timestamp": "2026-02-20T13:15:00Z"
+      "timestamp": "2026-01-20T13:15:00Z"
     },
     {
       "id": "h2",
@@ -147,8 +147,8 @@
       "instrument": "PETR4",
       "eventType": "Ordem Criada",
       "details": "Compra de 1.000 @ R$ 38,50",
-      "origin": "Carlos Mendes",
-      "timestamp": "2026-02-20T14:32:01Z"
+      "origin": "Renato Abreu",
+      "timestamp": "2026-01-22T14:32:01Z"
     },
     {
       "id": "h3",
@@ -165,7 +165,7 @@
       "instrument": "VALE3",
       "eventType": "Ordem Criada",
       "details": "Venda de 5.000 @ R$ 65,20",
-      "origin": "Carlos Mendes",
+      "origin": "Renato Abreu",
       "timestamp": "2026-02-20T14:28:45Z"
     },
     {
@@ -174,7 +174,7 @@
       "instrument": "BBDC4",
       "eventType": "Cancelamento",
       "details": "Cancelamento manual pelo usuário",
-      "origin": "Carlos Mendes",
+      "origin": "Renato Abreu",
       "timestamp": "2026-02-20T11:42:10Z"
     },
     {
@@ -192,7 +192,7 @@
       "instrument": "HGLG11",
       "eventType": "Ordem Criada",
       "details": "Compra de 250 @ R$ 158,50",
-      "origin": "Carlos Mendes",
+      "origin": "Renato Abreu",
       "timestamp": "2026-02-19T16:00:00Z"
     },
     {
@@ -210,7 +210,7 @@
       "instrument": "MGLU3",
       "eventType": "Ordem Criada",
       "details": "Venda de 1.000 @ R$ 2,50",
-      "origin": "Carlos Mendes",
+      "origin": "Renato Abreu",
       "timestamp": "2026-02-17T11:00:00Z"
     },
     {
@@ -263,5 +263,107 @@
         "valor": 142850
       }
     ]
-  }
+  },
+  "available_assets": [
+    {
+      "symbol": "VALE3",
+      "name": "Vale S.A.",
+      "type": "Ações"
+    },
+    {
+      "symbol": "PETR4",
+      "name": "Petrobras PN",
+      "type": "Ações"
+    },
+    {
+      "symbol": "ITUB4",
+      "name": "Itaú Unibanco PN",
+      "type": "Ações"
+    },
+    {
+      "symbol": "BBDC4",
+      "name": "Bradesco PN",
+      "type": "Ações"
+    },
+    {
+      "symbol": "WEGE3",
+      "name": "WEG S.A.",
+      "type": "Ações"
+    },
+    {
+      "symbol": "MGLU3",
+      "name": "Magazine Luiza",
+      "type": "Ações"
+    },
+    {
+      "symbol": "ABEV3",
+      "name": "Ambev S.A.",
+      "type": "Ações"
+    },
+    {
+      "symbol": "RENT3",
+      "name": "Localiza Rent a Car",
+      "type": "Ações"
+    },
+    {
+      "symbol": "HGLG11",
+      "name": "CGHG Logística",
+      "type": "FIIs"
+    },
+    {
+      "symbol": "XPLG11",
+      "name": "XP Logística",
+      "type": "FIIs"
+    },
+    {
+      "symbol": "KNRI11",
+      "name": "Kinea Renda Imobiliária",
+      "type": "FIIs"
+    },
+    {
+      "symbol": "MXRF11",
+      "name": "Maxi Renda",
+      "type": "FIIs"
+    },
+    {
+      "symbol": "VISC11",
+      "name": "Vinci Shopping Centers",
+      "type": "FIIs"
+    },
+    {
+      "symbol": "BTLG11",
+      "name": "BTG Pactual Logística",
+      "type": "FIIs"
+    },
+    {
+      "symbol": "TESOURO_SELIC",
+      "name": "Tesouro Selic 2029",
+      "type": "Renda Fixa"
+    },
+    {
+      "symbol": "CDB_ITAU_100",
+      "name": "CDB Itaú 100% CDI",
+      "type": "Renda Fixa"
+    },
+    {
+      "symbol": "LCI_CAIXA_90",
+      "name": "LCI Caixa Econômica",
+      "type": "Renda Fixa"
+    },
+    {
+      "symbol": "DEB_VALE_2030",
+      "name": "Debêntures Vale S.A.",
+      "type": "Renda Fixa"
+    },
+    {
+      "symbol": "CRA_BRF_2028",
+      "name": "CRA BRF S.A.",
+      "type": "Renda Fixa"
+    },
+    {
+      "symbol": "LCA_BB_92",
+      "name": "LCA Banco do Brasil",
+      "type": "Renda Fixa"
+    }
+  ]
 }

@@ -2,13 +2,13 @@ import { Header } from '../../components/organism/Header';
 import { Sidebar } from '../../components/organism/Sidebar';
 import Box from '@mui/material/Box';
 import { ContainerCenter } from '../../components/templates/ContainerCenter';
-import { OrderTitle } from './OrderTitle';
-import { OrderFilter } from './OrderFilter';
-import { OrderTable } from './OrderTable';
-import { useOrderStore } from '../../store/useOrderStore';
+import { HistoryTitle } from './HistoryTitle';
+import { HistoryTable } from './HistoryTable';
+import { HistoryFilter } from './HistoryFilter';
+import { useHistoryStore } from '../../store/useHistoryStore';
 
-export const OrdersPage = () => {
-  const orders = useOrderStore((state) => state.orders);
+export const HistoryPage = () => {
+  const ordersHistory = useHistoryStore((state) => state.ordersHistory);
 
   return (
     <Box display={'flex'}>
@@ -16,9 +16,9 @@ export const OrdersPage = () => {
       <Box width={'100%'} overflow={'hidden'}>
         <Header />
         <ContainerCenter>
-          <OrderTitle />
-          <OrderFilter />
-          <OrderTable data={orders} />
+          <HistoryTitle />
+          <HistoryFilter />
+          <HistoryTable data={ordersHistory} />
         </ContainerCenter>
       </Box>
     </Box>

@@ -1,6 +1,11 @@
 export type OrderStatus = 'Aberta' | 'Parcial' | 'Executada' | 'Cancelada';
 export type OrderSide = 'COMPRA' | 'VENDA';
 export type AssetType = 'Ações' | 'FIIs' | 'Renda Fixa';
+export type EventType =
+  | 'Ordem Criada'
+  | 'Execução Parcial'
+  | 'Execução Total'
+  | 'Cancelamento';
 
 export interface Order {
   id: string;
@@ -20,11 +25,7 @@ export interface OrderHistory {
   id: string;
   orderId: string;
   instrument: string;
-  eventType:
-    | 'Ordem Criada'
-    | 'Execução Parcial'
-    | 'Execução Total'
-    | 'Cancelamento';
+  eventType: EventType;
   details: string;
   origin: string;
   timestamp: string;
