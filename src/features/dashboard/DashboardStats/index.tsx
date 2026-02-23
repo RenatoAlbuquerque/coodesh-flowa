@@ -6,6 +6,7 @@ import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined';
 import { formatCurrency } from '../../../utils/formatNumber';
 import { Route } from '../../../routes';
 import type { Order } from '../../../@types/api';
+import { removerScrollDisplay } from '../../../styles/globalCss';
 
 export const DashboardStats = () => {
   const { stats: data, ordersList = [] } = Route.useLoaderData();
@@ -54,6 +55,8 @@ export const DashboardStats = () => {
       justifyContent="space-between"
       gap="20px"
       mb="32px"
+      overflow="auto"
+      sx={removerScrollDisplay}
     >
       {statsConfig.map((item) => (
         <StatCard
@@ -89,6 +92,7 @@ const StatCard = memo(({ label, icon, value, description }: StatCardProps) => {
       display="flex"
       flexDirection="column"
       gap="12px"
+      minWidth="300px"
     >
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Typography color="text.disabled" variant="body1">

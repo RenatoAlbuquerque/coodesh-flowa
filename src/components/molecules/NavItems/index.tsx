@@ -15,7 +15,7 @@ const navList = [
   { label: 'Histórico', icon: <HistoryIcon />, route: '/history' },
 ];
 
-export const NavItems = () => {
+export const NavItems = ({ isCollapsed }: { isCollapsed: boolean }) => {
   const {
     palette: {
       primary,
@@ -24,40 +24,41 @@ export const NavItems = () => {
   } = useTheme();
 
   return (
-    <Box display={'flex'} flexDirection={'column'} gap="6px" width="100%">
+    <Box display="flex" flexDirection="column" gap="6px" width="100%">
       {navList.map((item) => (
         <Button
-          fullWidth
           key={item.label}
           component={Link}
           to={item.route}
+          fullWidth
           variant="text"
           size="large"
-          startIcon={item.icon}
+          startIcon={!isCollapsed ? item.icon : null}
           activeProps={{
             style: {
               backgroundColor: primary.dark,
             },
           }}
           sx={{
-            paddingX: '16px',
-            justifyContent: 'flex-start',
+            paddingX: isCollapsed ? '0px' : '16px',
+            justifyContent: isCollapsed ? 'center' : 'flex-start',
+            minWidth: 0,
             color: white,
-            '&:hover': {
-              backgroundColor: primary.dark,
-            },
+            '&:hover': { backgroundColor: primary.dark },
           }}
         >
-          <Typography
-            variant={'body1'}
-            textAlign={'start'}
-            fontWeight={500}
-            width={'100%'}
-            color={white}
-            textTransform={'capitalize'}
-          >
-            {item.label}
-          </Typography>
+          {isCollapsed ? (
+            item.icon
+          ) : (
+            <Typography
+              variant="body1"
+              fontWeight={500}
+              textTransform="capitalize"
+              color={white}
+            >
+              {item.label}
+            </Typography>
+          )}
         </Button>
       ))}
     </Box>

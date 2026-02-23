@@ -25,15 +25,6 @@ export const DashboardTables = () => {
             <Typography variant="body1" fontWeight={600}>
               Últimos Ativos colocados a venda
             </Typography>
-            <Button variant="outlined" size="small" color="inherit">
-              <Typography
-                textTransform={'capitalize'}
-                fontSize={'body1'}
-                color="#5E616A"
-              >
-                Mercado
-              </Typography>
-            </Button>
           </Box>
           <Divider />
           <TableLastSellingOpen />
