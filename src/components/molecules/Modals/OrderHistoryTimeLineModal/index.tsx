@@ -68,10 +68,36 @@ export const OrderHistoryTimelineModal = memo(
         PaperProps={DIALOG_PAPER_STYLES}
       >
         <DialogTitle
-          sx={{ m: 0, p: 2, display: 'flex', alignItems: 'center', gap: 1 }}
+          sx={{
+            m: 0,
+            p: 2,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 1,
+          }}
         >
-          <HistoryIcon color="primary" />
-          Histórico da Ordem #{order.id}
+          <Box display={'flex'} gap="10px" alignItems={'center'}>
+            <HistoryIcon color="primary" />
+            Histórico da Ordem {order.id}
+          </Box>
+
+          <Box mr="40px">
+            <Typography
+              sx={{
+                backgroundColor:
+                  order.side === 'COMPRA' ? '#16A34A' : '#E02424',
+              }}
+              p="2px 4px"
+              borderRadius={'4px'}
+              fontWeight={600}
+              color="background.default"
+              variant={'subtitle1'}
+            >
+              {order.side}
+            </Typography>
+          </Box>
+
           <IconButton
             onClick={onClose}
             sx={{
@@ -117,6 +143,14 @@ export const OrderHistoryTimelineModal = memo(
               </Typography>
               <Typography variant="body2" fontWeight={700}>
                 {order.remainingQuantity}
+              </Typography>
+            </Box>
+            <Box mb={1}>
+              <Typography variant="subtitle2" color="text.secondary">
+                Data e Hora
+              </Typography>
+              <Typography variant="body2" fontWeight={700}>
+                {dayjs(order.createdAt).format('DD/MM/YYYY HH:mm:ss')}
               </Typography>
             </Box>
           </Box>

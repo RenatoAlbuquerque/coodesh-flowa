@@ -23,12 +23,13 @@ import {
 import { useHistoryFilters } from '../../../store/useHistoryFilter';
 import { Route } from '../../../routes/history';
 import { useCallback } from 'react';
+import type { AvailableAsset } from '../../../@types/api';
 
 export const HistoryFilter = () => {
   const {
     palette: { text, primary },
   } = useTheme();
-  const { assets } = Route.useLoaderData();
+  const { assets }: { assets: AvailableAsset[] } = Route.useLoaderData();
   const INSTRUMENT_OPTIONS = getUniqueValues(assets, 'symbol');
 
   const setFilters = useHistoryFilters((state) => state.setFilters);
