@@ -3,7 +3,8 @@ import { useMemo } from 'react';
 import { Route } from '../../../routes/portfolio';
 
 export const PortfolioAllocation = () => {
-  const { allocation } = Route.useLoaderData();
+  const { allocation }: { allocation: Record<string, number> } =
+    Route.useLoaderData();
 
   const allocationData = useMemo(() => {
     const totalValue = Object.values(allocation).reduce(
@@ -15,7 +16,7 @@ export const PortfolioAllocation = () => {
       { key: 'Ações', label: 'Ações', color: '#3B82F6' },
       { key: 'FIIs', label: 'Fundos Imobiliários', color: '#8B5CF6' },
       { key: 'Renda Fixa', label: 'Renda Fixa', color: '#10B981' },
-      { key: 'Caixa', label: 'Caixa', color: '#F59E0B' },
+      { key: 'Caixa', label: 'Saldo Disponível', color: '#F59E0B' },
     ];
 
     return configs

@@ -1,27 +1,11 @@
 {
   "dashboard_stats": {
     "patrimonio_total": 10000,
-    "saldo_disponivel": 90,
-    "valor_investido": 9910,
+    "saldo_disponivel": 2110,
+    "valor_investido": 7890,
     "rentabilidade_mes": 150.5,
     "variacao_diaria_percent": 1.2,
     "evolucao_patrimonial": [
-      {
-        "data": "01 Dez",
-        "valor": 2000
-      },
-      {
-        "data": "15 Dez",
-        "valor": 3000
-      },
-      {
-        "data": "1 Jan",
-        "valor": 4500
-      },
-      {
-        "data": "15 Jan",
-        "valor": 6500
-      },
       {
         "data": "01 Fev",
         "valor": 9500
@@ -42,512 +26,762 @@
   },
   "orders": [
     {
-      "id": "ORD-1001",
+      "id": "ORD-8001",
+      "owner": "Renato Abreu",
       "instrument": "VALE3",
       "side": "COMPRA",
       "price": 60,
       "currentPrice": 62,
       "quantity": 10,
-      "remainingQuantity": 0,
-      "status": "Executada",
-      "createdAt": "2026-02-15T09:00:00Z"
+      "remainingQuantity": 10,
+      "status": "Aberta",
+      "createdAt": "2026-02-23T09:00:00Z"
     },
     {
-      "id": "ORD-1002",
+      "id": "ORD-8002",
+      "owner": "Renato Abreu",
       "instrument": "PETR4",
-      "side": "VENDA",
+      "side": "COMPRA",
       "price": 30,
       "currentPrice": 32,
-      "quantity": 10,
-      "remainingQuantity": 0,
-      "status": "Executada",
-      "createdAt": "2026-02-16T10:30:00Z"
-    },
-    {
-      "id": "ORD-1005",
-      "instrument": "WEGE3",
-      "side": "COMPRA",
-      "price": 40,
-      "currentPrice": 42,
-      "quantity": 20,
-      "remainingQuantity": 0,
-      "status": "Executada",
-      "createdAt": "2026-02-19T09:45:00Z"
-    },
-    {
-      "id": "ORD-1009",
-      "instrument": "TESOURO_SELIC",
-      "side": "COMPRA",
-      "price": 1000,
-      "currentPrice": 1010,
-      "quantity": 5,
-      "remainingQuantity": 0,
-      "status": "Executada",
-      "createdAt": "2026-02-21T16:00:00Z"
-    },
-    {
-      "id": "ORD-1099",
-      "instrument": "TESOURO_SELIC",
-      "side": "VENDA",
-      "price": 900,
-      "currentPrice": 1010,
-      "quantity": 2,
-      "remainingQuantity": 0,
-      "status": "Executada",
-      "createdAt": "2026-02-21T16:10:00Z"
-    },
-    {
-      "id": "ORD-3238",
-      "instrument": "VALE3",
-      "side": "COMPRA",
-      "price": 200,
-      "currentPrice": 200,
-      "quantity": 20,
-      "remainingQuantity": 5,
-      "status": "Parcial",
-      "createdAt": "2026-02-22T17:40:15Z"
-    },
-    {
-      "id": "ORD-5083",
-      "instrument": "VALE3",
-      "side": "COMPRA",
-      "price": 63,
-      "currentPrice": 63,
       "quantity": 5,
       "remainingQuantity": 5,
       "status": "Aberta",
-      "createdAt": "2026-02-22T18:23:51Z"
+      "createdAt": "2026-02-23T09:01:00Z"
     },
     {
-      "id": "ORD-1003",
-      "instrument": "ITUB4",
-      "side": "COMPRA",
-      "price": 30,
-      "currentPrice": 30,
-      "quantity": 20,
-      "remainingQuantity": 20,
-      "status": "Cancelada",
-      "createdAt": "2026-02-17T14:15:00Z"
-    },
-    {
-      "id": "ORD-2001",
+      "id": "ORD-8007",
+      "owner": "Renato Abreu",
       "instrument": "VALE3",
       "side": "VENDA",
-      "price": 65.5,
+      "price": 65,
       "currentPrice": 62,
-      "quantity": 5,
-      "remainingQuantity": 0,
-      "status": "Cancelada",
-      "createdAt": "2026-02-22T09:00:00Z"
+      "quantity": 10,
+      "remainingQuantity": 10,
+      "status": "Aberta",
+      "createdAt": "2026-02-23T09:02:00Z"
     },
     {
-      "id": "ORD-6001",
+      "id": "ORD-8008",
+      "owner": "Renato Abreu",
       "instrument": "PETR4",
       "side": "VENDA",
       "price": 35,
       "currentPrice": 32,
-      "quantity": 50,
-      "remainingQuantity": 50,
+      "quantity": 5,
+      "remainingQuantity": 5,
       "status": "Aberta",
-      "createdAt": "2026-02-22T14:00:00.000Z"
-    },
-    {
-      "id": "ORD-6002",
-      "instrument": "WEGE3",
-      "side": "VENDA",
-      "price": 44.5,
-      "currentPrice": 42,
-      "quantity": 10,
-      "remainingQuantity": 10,
-      "status": "Aberta",
-      "createdAt": "2026-02-22T14:30:00.000Z"
-    },
-    {
-      "id": "ORD-6003",
-      "instrument": "VALE3",
-      "side": "VENDA",
-      "price": 68,
-      "currentPrice": 62,
-      "quantity": 100,
-      "remainingQuantity": 100,
-      "status": "Aberta",
-      "createdAt": "2026-02-22T15:00:00.000Z"
-    },
-    {
-      "id": "ORD-6004",
-      "instrument": "ITUB4",
-      "side": "VENDA",
-      "price": 33.2,
-      "currentPrice": 30,
-      "quantity": 30,
-      "remainingQuantity": 30,
-      "status": "Aberta",
-      "createdAt": "2026-02-22T15:45:00.000Z"
-    },
-    {
-      "id": "ORD-6005",
-      "instrument": "PETR4",
-      "side": "VENDA",
-      "price": 31.5,
-      "currentPrice": 32,
-      "quantity": 15,
-      "remainingQuantity": 15,
-      "status": "Aberta",
-      "createdAt": "2026-02-22T16:20:00.000Z"
-    },
-    {
-      "id": "ORD-3642",
-      "instrument": "VALE3",
-      "side": "COMPRA",
-      "price": 70,
-      "quantity": 1,
-      "status": "Executada",
-      "remainingQuantity": 0,
-      "createdAt": "2026-02-22T19:52:40.216Z",
-      "currentPrice": 70
-    },
-    {
-      "id": "ORD-9004",
-      "instrument": "VALE3",
-      "side": "VENDA",
-      "price": 63,
-      "currentPrice": 63,
-      "quantity": 2,
-      "remainingQuantity": 0,
-      "status": "Executada",
-      "createdAt": "2026-02-23T10:15:00.000Z"
-    },
-    {
-      "id": "ORD-9003",
-      "instrument": "VALE3",
-      "side": "COMPRA",
-      "price": 63,
-      "currentPrice": 63,
-      "quantity": 2,
-      "remainingQuantity": 0,
-      "status": "Executada",
-      "createdAt": "2026-02-23T10:30:15.000Z"
+      "createdAt": "2026-02-23T09:03:00Z"
     },
     {
       "id": "ORD-9001",
-      "instrument": "PETR4",
-      "side": "VENDA",
-      "price": 32,
-      "currentPrice": 32,
-      "quantity": 5,
-      "remainingQuantity": 0,
-      "status": "Executada",
-      "createdAt": "2026-02-23T14:10:00.000Z"
+      "owner": "Mercado",
+      "instrument": "VALE3",
+      "side": "COMPRA",
+      "price": 59,
+      "currentPrice": 62,
+      "quantity": 10,
+      "remainingQuantity": 10,
+      "status": "Aberta",
+      "createdAt": "2026-02-23T09:04:00Z"
     },
     {
       "id": "ORD-9002",
+      "owner": "Mercado",
       "instrument": "PETR4",
       "side": "COMPRA",
-      "price": 32,
+      "price": 29,
+      "currentPrice": 32,
+      "quantity": 5,
+      "remainingQuantity": 5,
+      "status": "Aberta",
+      "createdAt": "2026-02-23T09:05:00Z"
+    },
+    {
+      "id": "ORD-9007",
+      "owner": "Mercado",
+      "instrument": "VALE3",
+      "side": "VENDA",
+      "price": 66,
+      "currentPrice": 62,
+      "quantity": 10,
+      "remainingQuantity": 10,
+      "status": "Aberta",
+      "createdAt": "2026-02-23T09:06:00Z"
+    },
+    {
+      "id": "ORD-9008",
+      "owner": "Mercado",
+      "instrument": "PETR4",
+      "side": "VENDA",
+      "price": 36,
       "currentPrice": 32,
       "quantity": 5,
       "remainingQuantity": 0,
+      "status": "Cancelada",
+      "createdAt": "2026-02-23T21:14:38.533Z"
+    },
+    {
+      "id": "ORD-8006",
+      "owner": "Renato Abreu",
+      "instrument": "ABEV3",
+      "side": "COMPRA",
+      "price": 12,
+      "currentPrice": 12,
+      "quantity": 10,
+      "remainingQuantity": 10,
+      "status": "Cancelada",
+      "createdAt": "2026-02-23T09:30:00Z"
+    },
+    {
+      "id": "ORD-8012",
+      "owner": "Renato Abreu",
+      "instrument": "B3SA3",
+      "side": "VENDA",
+      "price": 13,
+      "currentPrice": 13,
+      "quantity": 10,
+      "remainingQuantity": 10,
+      "status": "Cancelada",
+      "createdAt": "2026-02-23T09:31:00Z"
+    },
+    {
+      "id": "ORD-9006",
+      "owner": "Mercado",
+      "instrument": "ABEV3",
+      "side": "COMPRA",
+      "price": 11,
+      "currentPrice": 12,
+      "quantity": 10,
+      "remainingQuantity": 10,
+      "status": "Cancelada",
+      "createdAt": "2026-02-23T09:32:00Z"
+    },
+    {
+      "id": "ORD-9012",
+      "owner": "Mercado",
+      "instrument": "B3SA3",
+      "side": "VENDA",
+      "price": 14,
+      "currentPrice": 13,
+      "quantity": 10,
+      "remainingQuantity": 10,
+      "status": "Cancelada",
+      "createdAt": "2026-02-23T09:33:00Z"
+    },
+    {
+      "id": "ORD-9009",
+      "owner": "Mercado",
+      "instrument": "ITUB4",
+      "side": "VENDA",
+      "price": 35,
+      "currentPrice": 35,
+      "quantity": 20,
+      "remainingQuantity": 10,
+      "status": "Parcial",
+      "createdAt": "2026-02-23T10:00:00Z"
+    },
+    {
+      "id": "ORD-9010",
+      "owner": "Mercado",
+      "instrument": "BBDC4",
+      "side": "VENDA",
+      "price": 15,
+      "currentPrice": 15,
+      "quantity": 30,
+      "remainingQuantity": 15,
+      "status": "Parcial",
+      "createdAt": "2026-02-23T10:01:00Z"
+    },
+    {
+      "id": "ORD-9011",
+      "owner": "Mercado",
+      "instrument": "WEGE3",
+      "side": "VENDA",
+      "price": 40,
+      "currentPrice": 40,
+      "quantity": 10,
+      "remainingQuantity": 0,
       "status": "Executada",
-      "createdAt": "2026-02-23T14:10:05.000Z"
+      "createdAt": "2026-02-23T10:02:00Z"
+    },
+    {
+      "id": "ORD-8003",
+      "owner": "Renato Abreu",
+      "instrument": "ITUB4",
+      "side": "COMPRA",
+      "price": 35,
+      "currentPrice": 35,
+      "quantity": 20,
+      "remainingQuantity": 10,
+      "status": "Parcial",
+      "createdAt": "2026-02-23T10:15:00Z"
+    },
+    {
+      "id": "ORD-8004",
+      "owner": "Renato Abreu",
+      "instrument": "BBDC4",
+      "side": "COMPRA",
+      "price": 15,
+      "currentPrice": 15,
+      "quantity": 30,
+      "remainingQuantity": 15,
+      "status": "Parcial",
+      "createdAt": "2026-02-23T10:16:00Z"
+    },
+    {
+      "id": "ORD-8005",
+      "owner": "Renato Abreu",
+      "instrument": "WEGE3",
+      "side": "COMPRA",
+      "price": 40,
+      "currentPrice": 40,
+      "quantity": 10,
+      "remainingQuantity": 0,
+      "status": "Executada",
+      "createdAt": "2026-02-23T10:17:00Z"
+    },
+    {
+      "id": "ORD-8009",
+      "owner": "Renato Abreu",
+      "instrument": "MGLU3",
+      "side": "VENDA",
+      "price": 34,
+      "currentPrice": 34,
+      "quantity": 40,
+      "remainingQuantity": 20,
+      "status": "Parcial",
+      "createdAt": "2026-02-23T11:00:00Z"
+    },
+    {
+      "id": "ORD-8010",
+      "owner": "Renato Abreu",
+      "instrument": "BBAS3",
+      "side": "VENDA",
+      "price": 14,
+      "currentPrice": 14,
+      "quantity": 50,
+      "remainingQuantity": 25,
+      "status": "Parcial",
+      "createdAt": "2026-02-23T11:01:00Z"
+    },
+    {
+      "id": "ORD-8011",
+      "owner": "Renato Abreu",
+      "instrument": "RENT3",
+      "side": "VENDA",
+      "price": 42,
+      "currentPrice": 42,
+      "quantity": 10,
+      "remainingQuantity": 0,
+      "status": "Executada",
+      "createdAt": "2026-02-23T11:02:00Z"
+    },
+    {
+      "id": "ORD-9003",
+      "owner": "Mercado",
+      "instrument": "MGLU3",
+      "side": "COMPRA",
+      "price": 34,
+      "currentPrice": 34,
+      "quantity": 40,
+      "remainingQuantity": 20,
+      "status": "Parcial",
+      "createdAt": "2026-02-23T11:15:00Z"
+    },
+    {
+      "id": "ORD-9004",
+      "owner": "Mercado",
+      "instrument": "BBAS3",
+      "side": "COMPRA",
+      "price": 14,
+      "currentPrice": 14,
+      "quantity": 50,
+      "remainingQuantity": 25,
+      "status": "Parcial",
+      "createdAt": "2026-02-23T11:16:00Z"
+    },
+    {
+      "id": "ORD-9005",
+      "owner": "Mercado",
+      "instrument": "RENT3",
+      "side": "COMPRA",
+      "price": 42,
+      "currentPrice": 42,
+      "quantity": 10,
+      "remainingQuantity": 0,
+      "status": "Executada",
+      "createdAt": "2026-02-23T11:17:00Z"
+    },
+    {
+      "id": "ORD-9013",
+      "owner": "Mercado",
+      "instrument": "TESOURO_SELIC",
+      "side": "VENDA",
+      "price": 1015,
+      "currentPrice": 1010,
+      "quantity": 10,
+      "remainingQuantity": 8,
+      "status": "Parcial",
+      "createdAt": "2026-02-23T15:20:00.000Z"
+    },
+    {
+      "id": "ORD-9548",
+      "instrument": "TESOURO_SELIC",
+      "side": "COMPRA",
+      "price": 1020,
+      "quantity": 1,
+      "status": "Executada",
+      "remainingQuantity": 0,
+      "owner": "Renato Abreu",
+      "createdAt": "2026-02-23T20:59:10.312Z",
+      "currentPrice": 1020
+    },
+    {
+      "id": "ORD-1079",
+      "instrument": "TESOURO_SELIC",
+      "side": "COMPRA",
+      "price": 1020,
+      "quantity": 1,
+      "status": "Executada",
+      "remainingQuantity": 0,
+      "owner": "Renato Abreu",
+      "createdAt": "2026-02-23T21:00:44.693Z",
+      "currentPrice": 1020
     }
   ],
   "history": [
     {
-      "id": "H-C1001",
-      "orderId": "ORD-1001",
+      "id": "H-1",
+      "orderId": "ORD-8001",
       "instrument": "VALE3",
       "eventType": "Ordem Criada",
       "details": "Ordem de COMPRA inserida",
       "origin": "Renato Abreu",
-      "timestamp": "2026-02-15T09:00:00Z"
+      "timestamp": "2026-02-23T09:00:00Z"
     },
     {
-      "id": "H-001",
-      "orderId": "ORD-1001",
+      "id": "H-2",
+      "orderId": "ORD-8002",
+      "instrument": "PETR4",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de COMPRA inserida",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-23T09:01:00Z"
+    },
+    {
+      "id": "H-3",
+      "orderId": "ORD-8007",
       "instrument": "VALE3",
-      "eventType": "Execução Total",
-      "details": "COMPRA de 10 @ R$ 60,00",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-02-15T09:05:00Z"
+      "eventType": "Ordem Criada",
+      "details": "Ordem de VENDA inserida",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-23T09:02:00Z"
     },
     {
-      "id": "H-C1002",
-      "orderId": "ORD-1002",
+      "id": "H-4",
+      "orderId": "ORD-8008",
       "instrument": "PETR4",
       "eventType": "Ordem Criada",
       "details": "Ordem de VENDA inserida",
       "origin": "Renato Abreu",
-      "timestamp": "2026-02-16T10:30:00Z"
+      "timestamp": "2026-02-23T09:03:00Z"
     },
     {
-      "id": "H-002",
-      "orderId": "ORD-1002",
-      "instrument": "PETR4",
-      "eventType": "Execução Total",
-      "details": "VENDA de 10 @ R$ 30,00",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-02-16T10:35:00Z"
-    },
-    {
-      "id": "H-C1003",
-      "orderId": "ORD-1003",
-      "instrument": "ITUB4",
-      "eventType": "Ordem Criada",
-      "details": "Ordem de COMPRA inserida",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-17T14:15:00Z"
-    },
-    {
-      "id": "H-004",
-      "orderId": "ORD-1003",
-      "instrument": "ITUB4",
-      "eventType": "Cancelamento",
-      "details": "Cancelamento manual da ordem ORD-1003",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-22T17:58:33Z"
-    },
-    {
-      "id": "H-C1005",
-      "orderId": "ORD-1005",
-      "instrument": "WEGE3",
-      "eventType": "Ordem Criada",
-      "details": "Ordem de COMPRA inserida",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-19T09:45:00Z"
-    },
-    {
-      "id": "H-003",
-      "orderId": "ORD-1005",
-      "instrument": "WEGE3",
-      "eventType": "Execução Total",
-      "details": "COMPRA de 20 @ R$ 40,00",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-02-19T09:50:00Z"
-    },
-    {
-      "id": "H-C1009",
-      "orderId": "ORD-1009",
-      "instrument": "TESOURO_SELIC",
-      "eventType": "Ordem Criada",
-      "details": "Ordem de COMPRA inserida",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-21T16:00:00Z"
-    },
-    {
-      "id": "H-009A",
-      "orderId": "ORD-1009",
-      "instrument": "TESOURO_SELIC",
-      "eventType": "Execução Total",
-      "details": "COMPRA de 5 @ R$ 1000,00",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-02-21T16:02:15Z"
-    },
-    {
-      "id": "H-C1099",
-      "orderId": "ORD-1099",
-      "instrument": "TESOURO_SELIC",
-      "eventType": "Ordem Criada",
-      "details": "Ordem de VENDA inserida",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-21T16:10:00Z"
-    },
-    {
-      "id": "H-099A",
-      "orderId": "ORD-1099",
-      "instrument": "TESOURO_SELIC",
-      "eventType": "Execução Total",
-      "details": "VENDA de 2 @ R$ 900,00",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-02-21T16:15:30Z"
-    },
-    {
-      "id": "H-C2001",
-      "orderId": "ORD-2001",
-      "instrument": "VALE3",
-      "eventType": "Ordem Criada",
-      "details": "Ordem de VENDA inserida",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-22T09:00:00Z"
-    },
-    {
-      "id": "7dc8",
-      "orderId": "ORD-2001",
-      "instrument": "VALE3",
-      "eventType": "Execução Parcial",
-      "details": "Execução contra ORD-3642",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-02-22T19:52:40.216Z"
-    },
-    {
-      "id": "e401",
-      "orderId": "ORD-2001",
-      "instrument": "VALE3",
-      "eventType": "Cancelamento",
-      "details": "Cancelamento manual da ordem ORD-2001",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-22T19:53:17.256Z"
-    },
-    {
-      "id": "H-C3238",
-      "orderId": "ORD-3238",
-      "instrument": "VALE3",
-      "eventType": "Ordem Criada",
-      "details": "Ordem de COMPRA inserida",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-22T17:40:15Z"
-    },
-    {
-      "id": "H-005",
-      "orderId": "ORD-3238",
-      "instrument": "VALE3",
-      "eventType": "Execução Parcial",
-      "details": "Executado 15 de 20 @ R$ 200,00",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-02-22T17:41:11Z"
-    },
-    {
-      "id": "H-C5083",
-      "orderId": "ORD-5083",
-      "instrument": "VALE3",
-      "eventType": "Ordem Criada",
-      "details": "Ordem de COMPRA inserida",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-22T18:23:51Z"
-    },
-    {
-      "id": "H-C6001",
-      "orderId": "ORD-6001",
-      "instrument": "PETR4",
-      "eventType": "Ordem Criada",
-      "details": "Ordem de VENDA inserida",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-22T14:00:00.000Z"
-    },
-    {
-      "id": "H-C6002",
-      "orderId": "ORD-6002",
-      "instrument": "WEGE3",
-      "eventType": "Ordem Criada",
-      "details": "Ordem de VENDA inserida",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-22T14:30:00.000Z"
-    },
-    {
-      "id": "H-C6003",
-      "orderId": "ORD-6003",
-      "instrument": "VALE3",
-      "eventType": "Ordem Criada",
-      "details": "Ordem de VENDA inserida",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-22T15:00:00.000Z"
-    },
-    {
-      "id": "H-C6004",
-      "orderId": "ORD-6004",
-      "instrument": "ITUB4",
-      "eventType": "Ordem Criada",
-      "details": "Ordem de VENDA inserida",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-22T15:45:00.000Z"
-    },
-    {
-      "id": "H-C6005",
-      "orderId": "ORD-6005",
-      "instrument": "PETR4",
-      "eventType": "Ordem Criada",
-      "details": "Ordem de VENDA inserida",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-22T16:20:00.000Z"
-    },
-    {
-      "id": "H-C3642",
-      "orderId": "ORD-3642",
-      "instrument": "VALE3",
-      "eventType": "Ordem Criada",
-      "details": "Ordem de COMPRA inserida",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-22T19:52:40.216Z"
-    },
-    {
-      "id": "b60a",
-      "orderId": "ORD-3642",
-      "instrument": "VALE3",
-      "eventType": "Execução Total",
-      "details": "COMPRA de 1 @ R$ 70",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-02-22T19:52:40.216Z"
-    },
-    {
-      "id": "H-C9004",
-      "orderId": "ORD-9004",
-      "instrument": "VALE3",
-      "eventType": "Ordem Criada",
-      "details": "Ordem de VENDA inserida",
-      "origin": "Mercado",
-      "timestamp": "2026-02-23T10:15:00.000Z"
-    },
-    {
-      "id": "H-C9003",
-      "orderId": "ORD-9003",
-      "instrument": "VALE3",
-      "eventType": "Ordem Criada",
-      "details": "Ordem de COMPRA inserida",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-23T10:30:15.000Z"
-    },
-    {
-      "id": "H-E9003",
-      "orderId": "ORD-9003",
-      "instrument": "VALE3",
-      "eventType": "Execução Total",
-      "details": "COMPRA de 2 @ R$ 63 contra ORD-9004",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-02-23T10:30:15.100Z"
-    },
-    {
-      "id": "H-E9004",
-      "orderId": "ORD-9004",
-      "instrument": "VALE3",
-      "eventType": "Execução Total",
-      "details": "Execução contra ORD-9003 (2 @ R$ 63)",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-02-23T10:30:15.100Z"
-    },
-    {
-      "id": "H-C9001",
+      "id": "H-5",
       "orderId": "ORD-9001",
-      "instrument": "PETR4",
+      "instrument": "VALE3",
       "eventType": "Ordem Criada",
-      "details": "Ordem de VENDA inserida",
-      "origin": "Renato Abreu",
-      "timestamp": "2026-02-23T14:10:00.000Z"
+      "details": "Ordem de COMPRA inserida",
+      "origin": "Mercado",
+      "timestamp": "2026-02-23T09:04:00Z"
     },
     {
-      "id": "H-C9002",
+      "id": "H-6",
       "orderId": "ORD-9002",
       "instrument": "PETR4",
       "eventType": "Ordem Criada",
       "details": "Ordem de COMPRA inserida",
       "origin": "Mercado",
-      "timestamp": "2026-02-23T14:10:05.000Z"
+      "timestamp": "2026-02-23T09:05:00Z"
     },
     {
-      "id": "H-E9002",
-      "orderId": "ORD-9002",
-      "instrument": "PETR4",
-      "eventType": "Execução Total",
-      "details": "COMPRA de 5 @ R$ 32 contra ORD-9001",
-      "origin": "Sistema de Matching",
-      "timestamp": "2026-02-23T14:10:05.100Z"
+      "id": "H-7",
+      "orderId": "ORD-9007",
+      "instrument": "VALE3",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de VENDA inserida",
+      "origin": "Mercado",
+      "timestamp": "2026-02-23T09:06:00Z"
     },
     {
-      "id": "H-E9001",
-      "orderId": "ORD-9001",
+      "id": "H-8",
+      "orderId": "ORD-9008",
       "instrument": "PETR4",
-      "eventType": "Execução Total",
-      "details": "Execução contra ORD-9002 (5 @ R$ 32)",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de VENDA inserida",
+      "origin": "Mercado",
+      "timestamp": "2026-02-23T09:07:00Z"
+    },
+    {
+      "id": "H-9",
+      "orderId": "ORD-8006",
+      "instrument": "ABEV3",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de COMPRA inserida",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-23T09:30:00Z"
+    },
+    {
+      "id": "H-10",
+      "orderId": "ORD-8012",
+      "instrument": "B3SA3",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de VENDA inserida",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-23T09:31:00Z"
+    },
+    {
+      "id": "H-11",
+      "orderId": "ORD-9006",
+      "instrument": "ABEV3",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de COMPRA inserida",
+      "origin": "Mercado",
+      "timestamp": "2026-02-23T09:32:00Z"
+    },
+    {
+      "id": "H-12",
+      "orderId": "ORD-9012",
+      "instrument": "B3SA3",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de VENDA inserida",
+      "origin": "Mercado",
+      "timestamp": "2026-02-23T09:33:00Z"
+    },
+    {
+      "id": "H-13",
+      "orderId": "ORD-8006",
+      "instrument": "ABEV3",
+      "eventType": "Cancelamento",
+      "details": "Cancelamento manual da ordem ORD-8006",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-23T09:45:00Z"
+    },
+    {
+      "id": "H-14",
+      "orderId": "ORD-8012",
+      "instrument": "B3SA3",
+      "eventType": "Cancelamento",
+      "details": "Cancelamento manual da ordem ORD-8012",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-23T09:45:05Z"
+    },
+    {
+      "id": "H-15",
+      "orderId": "ORD-9006",
+      "instrument": "ABEV3",
+      "eventType": "Cancelamento",
+      "details": "Cancelamento pelo sistema ORD-9006",
+      "origin": "Mercado",
+      "timestamp": "2026-02-23T09:45:10Z"
+    },
+    {
+      "id": "H-16",
+      "orderId": "ORD-9012",
+      "instrument": "B3SA3",
+      "eventType": "Cancelamento",
+      "details": "Cancelamento pelo sistema ORD-9012",
+      "origin": "Mercado",
+      "timestamp": "2026-02-23T09:45:15Z"
+    },
+    {
+      "id": "H-17",
+      "orderId": "ORD-9009",
+      "instrument": "ITUB4",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de VENDA inserida",
+      "origin": "Mercado",
+      "timestamp": "2026-02-23T10:00:00Z"
+    },
+    {
+      "id": "H-18",
+      "orderId": "ORD-9010",
+      "instrument": "BBDC4",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de VENDA inserida",
+      "origin": "Mercado",
+      "timestamp": "2026-02-23T10:01:00Z"
+    },
+    {
+      "id": "H-19",
+      "orderId": "ORD-9011",
+      "instrument": "WEGE3",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de VENDA inserida",
+      "origin": "Mercado",
+      "timestamp": "2026-02-23T10:02:00Z"
+    },
+    {
+      "id": "H-20",
+      "orderId": "ORD-8003",
+      "instrument": "ITUB4",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de COMPRA inserida",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-23T10:15:00Z"
+    },
+    {
+      "id": "H-21",
+      "orderId": "ORD-8003",
+      "instrument": "ITUB4",
+      "eventType": "Execução Parcial",
+      "details": "COMPRA de 10 @ R$ 35 contra ORD-9009",
       "origin": "Sistema de Matching",
-      "timestamp": "2026-02-23T14:10:05.100Z"
+      "timestamp": "2026-02-23T10:15:01Z"
+    },
+    {
+      "id": "H-22",
+      "orderId": "ORD-9009",
+      "instrument": "ITUB4",
+      "eventType": "Execução Parcial",
+      "details": "Execução contra ORD-8003 (10 @ R$ 35)",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-23T10:15:01Z"
+    },
+    {
+      "id": "H-23",
+      "orderId": "ORD-8004",
+      "instrument": "BBDC4",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de COMPRA inserida",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-23T10:16:00Z"
+    },
+    {
+      "id": "H-24",
+      "orderId": "ORD-8004",
+      "instrument": "BBDC4",
+      "eventType": "Execução Parcial",
+      "details": "COMPRA de 15 @ R$ 15 contra ORD-9010",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-23T10:16:01Z"
+    },
+    {
+      "id": "H-25",
+      "orderId": "ORD-9010",
+      "instrument": "BBDC4",
+      "eventType": "Execução Parcial",
+      "details": "Execução contra ORD-8004 (15 @ R$ 15)",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-23T10:16:01Z"
+    },
+    {
+      "id": "H-26",
+      "orderId": "ORD-8005",
+      "instrument": "WEGE3",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de COMPRA inserida",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-23T10:17:00Z"
+    },
+    {
+      "id": "H-27",
+      "orderId": "ORD-8005",
+      "instrument": "WEGE3",
+      "eventType": "Execução Total",
+      "details": "COMPRA de 10 @ R$ 40 contra ORD-9011",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-23T10:17:01Z"
+    },
+    {
+      "id": "H-28",
+      "orderId": "ORD-9011",
+      "instrument": "WEGE3",
+      "eventType": "Execução Total",
+      "details": "Execução contra ORD-8005 (10 @ R$ 40)",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-23T10:17:01Z"
+    },
+    {
+      "id": "H-29",
+      "orderId": "ORD-8009",
+      "instrument": "MGLU3",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de VENDA inserida",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-23T11:00:00Z"
+    },
+    {
+      "id": "H-30",
+      "orderId": "ORD-8010",
+      "instrument": "BBAS3",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de VENDA inserida",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-23T11:01:00Z"
+    },
+    {
+      "id": "H-31",
+      "orderId": "ORD-8011",
+      "instrument": "RENT3",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de VENDA inserida",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-23T11:02:00Z"
+    },
+    {
+      "id": "H-32",
+      "orderId": "ORD-9003",
+      "instrument": "MGLU3",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de COMPRA inserida",
+      "origin": "Mercado",
+      "timestamp": "2026-02-23T11:15:00Z"
+    },
+    {
+      "id": "H-33",
+      "orderId": "ORD-9003",
+      "instrument": "MGLU3",
+      "eventType": "Execução Parcial",
+      "details": "COMPRA de 20 @ R$ 34 contra ORD-8009",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-23T11:15:01Z"
+    },
+    {
+      "id": "H-34",
+      "orderId": "ORD-8009",
+      "instrument": "MGLU3",
+      "eventType": "Execução Parcial",
+      "details": "Execução contra ORD-9003 (20 @ R$ 34)",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-23T11:15:01Z"
+    },
+    {
+      "id": "H-35",
+      "orderId": "ORD-9004",
+      "instrument": "BBAS3",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de COMPRA inserida",
+      "origin": "Mercado",
+      "timestamp": "2026-02-23T11:16:00Z"
+    },
+    {
+      "id": "H-36",
+      "orderId": "ORD-9004",
+      "instrument": "BBAS3",
+      "eventType": "Execução Parcial",
+      "details": "COMPRA de 25 @ R$ 14 contra ORD-8010",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-23T11:16:01Z"
+    },
+    {
+      "id": "H-37",
+      "orderId": "ORD-8010",
+      "instrument": "BBAS3",
+      "eventType": "Execução Parcial",
+      "details": "Execução contra ORD-9004 (25 @ R$ 14)",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-23T11:16:01Z"
+    },
+    {
+      "id": "H-38",
+      "orderId": "ORD-9005",
+      "instrument": "RENT3",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de COMPRA inserida",
+      "origin": "Mercado",
+      "timestamp": "2026-02-23T11:17:00Z"
+    },
+    {
+      "id": "H-39",
+      "orderId": "ORD-9005",
+      "instrument": "RENT3",
+      "eventType": "Execução Total",
+      "details": "COMPRA de 10 @ R$ 42 contra ORD-8011",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-23T11:17:01Z"
+    },
+    {
+      "id": "H-40",
+      "orderId": "ORD-8011",
+      "instrument": "RENT3",
+      "eventType": "Execução Total",
+      "details": "Execução contra ORD-9005 (10 @ R$ 42)",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-23T11:17:01Z"
+    },
+    {
+      "id": "H-41",
+      "orderId": "ORD-9013",
+      "instrument": "TESOURO_SELIC",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de VENDA de Renda Fixa inserida pelo sistema",
+      "origin": "Mercado",
+      "timestamp": "2026-02-23T15:20:00.000Z"
+    },
+    {
+      "id": "2cc2",
+      "orderId": "ORD-9548",
+      "instrument": "TESOURO_SELIC",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de COMPRA inserida",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-23T20:59:10.312Z"
+    },
+    {
+      "id": "db7e",
+      "orderId": "ORD-9548",
+      "instrument": "TESOURO_SELIC",
+      "eventType": "Execução Total",
+      "details": "COMPRA de 1 @ R$ 1015 contra ORD-9013",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-23T20:59:10.439Z"
+    },
+    {
+      "id": "2f80",
+      "orderId": "ORD-9013",
+      "instrument": "TESOURO_SELIC",
+      "eventType": "Execução Parcial",
+      "details": "Execução contra ORD-9548 (1 @ R$ 1015)",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-23T20:59:10.439Z"
+    },
+    {
+      "id": "1ea5",
+      "orderId": "ORD-1079",
+      "instrument": "TESOURO_SELIC",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de COMPRA inserida",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-23T21:00:44.693Z"
+    },
+    {
+      "id": "077a",
+      "orderId": "ORD-1079",
+      "instrument": "TESOURO_SELIC",
+      "eventType": "Execução Total",
+      "details": "COMPRA de 1 @ R$ 1015 contra ORD-9013",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-23T21:00:44.960Z"
+    },
+    {
+      "id": "24db",
+      "orderId": "ORD-9013",
+      "instrument": "TESOURO_SELIC",
+      "eventType": "Execução Parcial",
+      "details": "Execução contra ORD-1079 (1 @ R$ 1015)",
+      "origin": "Sistema de Matching",
+      "timestamp": "2026-02-23T21:00:44.960Z"
+    },
+    {
+      "id": "1acd",
+      "orderId": "ORD-9008",
+      "instrument": "PETR4",
+      "eventType": "Cancelamento",
+      "details": "Cancelamento manual da ordem ORD-9008",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-23T21:14:38.547Z"
     }
   ],
   "available_assets": [
@@ -570,9 +804,33 @@
       "type": "Ações"
     },
     {
+      "id": "a4",
+      "symbol": "ABEV3",
+      "name": "Ambev S.A.",
+      "type": "Ações"
+    },
+    {
       "id": "a5",
       "symbol": "WEGE3",
       "name": "WEG S.A.",
+      "type": "Ações"
+    },
+    {
+      "id": "a6",
+      "symbol": "B3SA3",
+      "name": "B3 S.A. - Brasil, Bolsa, Balcão",
+      "type": "Ações"
+    },
+    {
+      "id": "a7",
+      "symbol": "BBDC4",
+      "name": "Banco Bradesco PN",
+      "type": "Ações"
+    },
+    {
+      "id": "a8",
+      "symbol": "MGLU3",
+      "name": "Magazine Luiza S.A.",
       "type": "Ações"
     },
     {
@@ -580,6 +838,18 @@
       "symbol": "TESOURO_SELIC",
       "name": "Tesouro Selic 2029",
       "type": "Renda Fixa"
+    },
+    {
+      "id": "a10",
+      "symbol": "BBAS3",
+      "name": "Banco do Brasil S.A.",
+      "type": "Ações"
+    },
+    {
+      "id": "a11",
+      "symbol": "RENT3",
+      "name": "Localiza Rent a Car S.A.",
+      "type": "Ações"
     }
   ]
 }

@@ -41,6 +41,7 @@ export const Route = createFileRoute('/')({
           : dataLatest;
 
       const dataLatestSellingOpen = await orderService.getAllOrders({
+        status: ['Aberta', 'Parcial'] as unknown as string,
         side: 'VENDA',
         _sort: '-createdAt',
         _page: 1,

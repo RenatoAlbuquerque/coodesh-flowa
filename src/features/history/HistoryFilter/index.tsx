@@ -31,6 +31,7 @@ export const HistoryFilter = () => {
   } = useTheme();
   const { assets }: { assets: AvailableAsset[] } = Route.useLoaderData();
   const INSTRUMENT_OPTIONS = getUniqueValues(assets, 'symbol');
+  const currentFilters = useHistoryFilters((state) => state.filters);
 
   const setFilters = useHistoryFilters((state) => state.setFilters);
   const resetStore = useHistoryFilters((state) => state.resetFilters);
@@ -42,13 +43,7 @@ export const HistoryFilter = () => {
     formState: { isDirty, isSubmitting },
   } = useForm<HistoryFilterData>({
     resolver: zodResolver(historyFilterSchema),
-    defaultValues: {
-      orderId: '',
-      instrument: null,
-      eventType: null,
-      startDate: null,
-      endDate: null,
-    },
+    defaultValues: currentFilters,
   });
 
   const onFilter = useCallback(

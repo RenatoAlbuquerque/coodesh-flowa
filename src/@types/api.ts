@@ -22,6 +22,7 @@ export interface Order {
   category?: string;
   type?: AssetType;
   side: OrderSide;
+  owner: 'Renato Abreu' | 'Mercado';
   price: number;
   currentPrice: number;
   quantity: number;

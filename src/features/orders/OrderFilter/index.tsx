@@ -20,6 +20,7 @@ import { DatePicker } from '../../../components/atoms/Datepicker';
 import { orderFilterSchema, type OrderFilterData } from './helperOrderFilter';
 import { useOrderFilters } from '../../../store/useOrderFilters';
 import { AutocompleteAvailableTickets } from '../../../components/atoms/Autocomplete/AutocompleteAvailableTickets';
+import type { AvailableAsset } from '../../../@types/api';
 
 const AUTOCOMPLETE_PAPER_STYLE = {
   sx: {
@@ -43,8 +44,8 @@ export const OrderFilter = () => {
   const currentFilters = useOrderFilters((state) => state.filters);
 
   const instrumentOptions = useMemo(
-    () => getUniqueValues(orders.assets, 'symbol'),
-    [orders.assets],
+    () => getUniqueValues(orders?.assets as AvailableAsset[], 'symbol'),
+    [orders?.assets],
   );
 
   const isStoreEmpty = useMemo(
@@ -62,13 +63,7 @@ export const OrderFilter = () => {
     formState: { isDirty, isSubmitting },
   } = useForm<OrderFilterData>({
     resolver: zodResolver(orderFilterSchema),
-    defaultValues: {
-      orderId: '',
-      instrument: null,
-      side: null,
-      status: null,
-      date: null,
-    },
+    defaultValues: currentFilters,
   });
 
   const onFilter = useCallback(

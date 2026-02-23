@@ -1,15 +1,16 @@
 import { create } from 'zustand';
 import type { Order, AvailableAsset, IResponseOrders } from '../@types/api';
 import { orderService } from '../services/orderService';
-import { calculateOrderExecution } from '../api/engine/calculateOrderExecution';
 import { toast } from 'react-toastify';
 import { useOrderFilters } from './useOrderFilters';
 import { api } from '../services/axios';
 import type { IPortfolioStatusResponse } from '../@types/portfolio';
 import { assetsService } from '../services/assetsService';
 import { dashboardService } from '../services/dashboardService';
+import { createOrderAction } from '../actions/createOrderAction';
+import { cancelOrderAction } from '../actions/cancelOrderAction';
 
-interface OrderState {
+export interface OrderState {
   orders: IResponseOrders;
   availableAssets: AvailableAsset[];
   isLoading: boolean;
@@ -52,7 +53,6 @@ export const useOrderStore = create<OrderState>((set, get) => ({
   },
 
   setOrders: (orders) => set({ orders }),
-
   setAvailableAssets: (assets) => set({ availableAssets: assets }),
 
   getOrders: async () => {
@@ -94,178 +94,11 @@ export const useOrderStore = create<OrderState>((set, get) => ({
     }
   },
 
-  createOrder: async (formData) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    const currentFilters = useOrderFilters.getState().filters;
+  createOrder: (formData) => createOrderAction(formData, get, set),
 
-    const orders = await orderService.getAllOrders();
-    const result = calculateOrderExecution(formData, orders as Order[]);
-    const orderId = `ORD-${Math.floor(Math.random() * 9000 + 1000)}`;
-    const now = new Date().toISOString();
+  cancelOrder: (order) => cancelOrderAction(order, get, set),
 
-    try {
-      if (result) {
-        await orderService.saveOrder({
-          ...formData,
-          id: orderId,
-          status: result.status,
-          remainingQuantity: result?.remainingQuantity,
-          createdAt: now,
-          currentPrice: formData.price,
-        });
-      }
-
-      const orderValue = formData.quantity * formData.price;
-
-      if (formData.side === 'COMPRA') {
-        await get().updateDashboardBalance(orderValue, 'COMPRA');
-      } else if (
-        formData.side === 'VENDA' &&
-        (result.status === 'Executada' || result.status === 'Parcial')
-      ) {
-        const executedQty = formData.quantity - result.remainingQuantity;
-        const executedValue = executedQty * formData.price;
-        if (executedValue > 0) {
-          await get().updateDashboardBalance(executedValue, 'VENDA');
-        }
-      }
-
-      if (result.hasMatch && result.match) {
-        if (result.match.side === 'VENDA') {
-          const executedQty =
-            result.match.remainingQuantity -
-            result.counterpartUpdate.remainingQuantity;
-          const executedValue = executedQty * result.match.price;
-
-          if (executedValue > 0) {
-            await get().updateDashboardBalance(executedValue, 'VENDA');
-          }
-        }
-      }
-
-      await orderService.logEvent({
-        orderId,
-        instrument: formData.instrument,
-        eventType: 'Ordem Criada',
-        details: `Ordem de ${formData.side} inserida`,
-        origin: 'Renato Abreu',
-        timestamp: now,
-      });
-
-      if (result.hasMatch && result.match) {
-        const executedQty = formData.quantity - result.remainingQuantity;
-        const matchNow = new Date().toISOString();
-
-        await orderService.logEvent({
-          orderId,
-          instrument: formData.instrument,
-          eventType:
-            result.status === 'Executada'
-              ? 'Execução Total'
-              : 'Execução Parcial',
-          details: `${formData.side} de ${executedQty} @ R$ ${result.match.price} contra ${result.match.id}`,
-          origin: 'Sistema de Matching',
-          timestamp: matchNow,
-        });
-
-        await orderService.updateOrder(
-          result.match.id,
-          result.counterpartUpdate,
-        );
-
-        await orderService.logEvent({
-          orderId: result.match.id,
-          instrument: result.match.instrument,
-          eventType:
-            result.counterpartUpdate.status === 'Executada'
-              ? 'Execução Total'
-              : 'Execução Parcial',
-          details: `Execução contra ${orderId} (${executedQty} @ R$ ${result.match.price})`,
-          origin: 'Sistema de Matching',
-          timestamp: matchNow,
-        });
-
-        toast.info(`Match instantâneo em ${formData.instrument}!`);
-      }
-
-      const freshOrders = await orderService.getAllOrders({
-        ...currentFilters,
-        _sort: '-timestamp',
-      });
-
-      const ordersData = Array.isArray(freshOrders)
-        ? {
-            data: freshOrders,
-            items: freshOrders.length,
-            first: 0,
-            last: 0,
-            next: 0,
-            pages: 0,
-          }
-        : freshOrders;
-
-      set({ orders: ordersData, isLoading: false });
-    } catch {
-      toast.error('❌ Falha ao conectar com o servidor.');
-      set({ error: 'Falha ao processar ordem no servidor.' });
-    }
-  },
-
-  cancelOrder: async (order: Order) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    const currentFilters = useOrderFilters.getState().filters;
-
-    if (order.status !== 'Aberta' && order.status !== 'Parcial') {
-      set({ error: 'Apenas ordens abertas ou parciais podem ser canceladas.' });
-      return;
-    }
-
-    try {
-      set({ isLoading: true });
-
-      await orderService.cancelOrder(order.id);
-
-      if (order.side === 'COMPRA') {
-        const refundValue = order.remainingQuantity * order.price;
-        await get().updateDashboardBalance(refundValue, 'CANCELAMENTO_COMPRA');
-      }
-
-      await orderService.logEvent({
-        orderId: order.id,
-        instrument: order.instrument,
-        eventType: 'Cancelamento',
-        details: `Cancelamento manual da ordem ${order.id}`,
-        origin: 'Renato Abreu',
-        timestamp: new Date().toISOString(),
-      });
-
-      const freshOrders = await orderService.getAllOrders({
-        ...currentFilters,
-        _sort: '-timestamp',
-      });
-
-      const ordersData = Array.isArray(freshOrders)
-        ? {
-            data: freshOrders,
-            items: freshOrders.length,
-            first: 0,
-            last: 0,
-            next: 0,
-            pages: 0,
-          }
-        : freshOrders;
-
-      set({ orders: ordersData, isLoading: false });
-    } catch (err) {
-      set({ error: 'Erro ao cancelar a ordem.', isLoading: false });
-      console.error(err);
-    }
-  },
-
-  updateDashboardBalance: async (
-    value: number,
-    type: 'COMPRA' | 'VENDA' | 'CANCELAMENTO_COMPRA',
-  ) => {
+  updateDashboardBalance: async (value, type) => {
     try {
       const stats = await dashboardService.getDashboardStats();
       let newSaldo = stats.saldo_disponivel;
@@ -274,19 +107,27 @@ export const useOrderStore = create<OrderState>((set, get) => ({
       if (type === 'COMPRA') {
         newSaldo -= value;
         newInvestido += value;
-      } else if (type === 'VENDA') {
-        newSaldo += value;
-        newInvestido -= value;
-      } else if (type === 'CANCELAMENTO_COMPRA') {
+      } else if (type === 'VENDA' || type === 'CANCELAMENTO_COMPRA') {
         newSaldo += value;
         newInvestido -= value;
       }
 
+      const newTotal = newSaldo + newInvestido;
+
       await api.patch('/dashboard_stats', {
         saldo_disponivel: newSaldo,
         valor_investido: newInvestido,
-        patrimonio_total: newSaldo + newInvestido,
+        patrimonio_total: newTotal,
       });
+
+      set((state) => ({
+        stats: {
+          ...state.stats,
+          saldo_disponivel: newSaldo,
+          valor_investido: newInvestido,
+          patrimonio_total: newTotal,
+        },
+      }));
     } catch (err) {
       console.error('Erro ao atualizar dashboard:', err);
     }

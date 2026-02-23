@@ -15,16 +15,22 @@ export const orderService = {
   ): Promise<IResponseOrders | Order[]> => {
     const cleaned = filters ? cleanParams(filters) : {};
 
-    const { orderId, date, ...rest } = cleaned;
+    const { orderId, date, status, ...rest } = cleaned;
     const params: Record<string, unknown> = { ...rest };
+
     if (orderId) {
       params.id = orderId;
+    }
+
+    if (status) {
+      params.status = status;
     }
 
     if (date) {
       params.createdAt_gte = dayjs(date).startOf('day').toISOString();
       params.createdAt_lte = dayjs(date).endOf('day').toISOString();
     }
+
     const { data } = await api.get<IResponseOrders | Order[]>('/orders', {
       params,
     });
@@ -45,6 +51,7 @@ export const orderService = {
 
   cancelOrder: async (orderId: string): Promise<Order> => {
     const response = await api.patch<Order>(`/orders/${orderId}`, {
+      createdAt: new Date().toISOString(),
       status: 'Cancelada',
       remainingQuantity: 0,
     });
