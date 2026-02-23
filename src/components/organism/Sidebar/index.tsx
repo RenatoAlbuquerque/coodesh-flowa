@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Box, IconButton, useTheme, useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -6,7 +6,12 @@ import { Logo } from '../../atoms/Logo';
 import { NavItems } from '../../molecules/NavItems';
 
 export const Sidebar = () => {
-  const { shadows, transitions, palette: { common }, breakpoints } = useTheme();
+  const {
+    shadows,
+    transitions,
+    palette: { common },
+    breakpoints,
+  } = useTheme();
   const isLargeScreen = useMediaQuery(breakpoints.up('lg'));
 
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -39,10 +44,13 @@ export const Sidebar = () => {
           borderRight: '1px solid',
           borderColor: 'divider',
           boxShadow: !activeCollapsed && !isLargeScreen ? shadows[8] : 'none',
-          transition: transitions.create(['width', 'padding', 'background-color'], {
-            easing: transitions.easing.sharp,
-            duration: transitions.duration.shorter,
-          }),
+          transition: transitions.create(
+            ['width', 'padding', 'background-color'],
+            {
+              easing: transitions.easing.sharp,
+              duration: transitions.duration.shorter,
+            },
+          ),
           overflowX: 'hidden',
           pointerEvents: 'auto',
         }}

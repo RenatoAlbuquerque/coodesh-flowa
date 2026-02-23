@@ -4,6 +4,7 @@ import { portfolioService } from '../services/portfolioService';
 import { orderService } from '../services/orderService';
 import { assetsService } from '../services/assetsService';
 import { toast } from 'react-toastify';
+import { dashboardService } from '../services/dashboardService';
 
 export const Route = createFileRoute('/portfolio')({
   beforeLoad: () => {
@@ -13,8 +14,8 @@ export const Route = createFileRoute('/portfolio')({
   loader: async () => {
     try {
       const [stats, ordersResponse, assets] = await Promise.all([
-        portfolioService.getDashboardStats(),
-        orderService.getAllOrders({ _per_page: 1000, _page: 1 }),
+        dashboardService.getDashboardStats(),
+        orderService.getAllOrders(),
         assetsService.availableAssets(),
       ]);
 

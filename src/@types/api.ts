@@ -72,7 +72,7 @@ export interface Database {
 }
 
 export interface AvailableAsset {
-  id: string
+  id: string;
   symbol: string;
   name: string;
   type: 'Ações' | 'FIIs' | 'Renda Fixa';

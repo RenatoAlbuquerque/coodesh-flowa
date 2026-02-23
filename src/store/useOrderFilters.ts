@@ -27,7 +27,7 @@ export const useOrderFilters = create<OrderFiltersStore>((set) => ({
     }),
   setPagination: (page: number, pageSize: number) =>
     set((state) => ({
-      filters: { ...state.filters, _page: page, _per_page: pageSize, },
+      filters: { ...state.filters, _page: page, _per_page: pageSize },
     })),
   resetFilters: () => set({ filters: initialFilters }),
 }));

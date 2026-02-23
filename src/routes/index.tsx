@@ -5,6 +5,7 @@ import type { Order } from '../@types/api';
 import { DashboardPage } from '../features/dashboard';
 import { assetsService } from '../services/assetsService';
 import { toast } from 'react-toastify';
+import { dashboardService } from '../services/dashboardService';
 
 export const Route = createFileRoute('/')({
   beforeLoad: () => {
@@ -13,7 +14,7 @@ export const Route = createFileRoute('/')({
   loader: async () => {
     try {
       const [stats, ordersList, assets] = await Promise.all([
-        portfolioService.getDashboardStats(),
+        dashboardService.getDashboardStats(),
         orderService.getAllOrders(),
         assetsService.availableAssets(),
       ]);
@@ -31,11 +32,11 @@ export const Route = createFileRoute('/')({
       const dataLatest = await orderService.getAllOrders({
         _sort: '-createdAt',
         _page: 1,
-        _per_page: 3
+        _per_page: 3,
       });
 
       const ordersLatest =
-        (typeof dataLatest === 'object' && 'data' in dataLatest)
+        typeof dataLatest === 'object' && 'data' in dataLatest
           ? dataLatest.data
           : dataLatest;
 
@@ -43,11 +44,12 @@ export const Route = createFileRoute('/')({
         side: 'VENDA',
         _sort: '-createdAt',
         _page: 1,
-        _per_page: 3
+        _per_page: 3,
       });
 
       const ordersLatestSellingOpen =
-        (typeof dataLatestSellingOpen === 'object' && 'data' in dataLatestSellingOpen)
+        typeof dataLatestSellingOpen === 'object' &&
+        'data' in dataLatestSellingOpen
           ? dataLatestSellingOpen.data
           : dataLatestSellingOpen;
 

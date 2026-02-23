@@ -1,4 +1,3 @@
-import { api } from './axios';
 import type {
   DashboardStats,
   Order,
@@ -16,11 +15,6 @@ interface IPositionAccumulator {
 }
 
 export const portfolioService = {
-  getDashboardStats: async (): Promise<DashboardStats> => {
-    const { data } = await api.get<DashboardStats>('/dashboard_stats');
-    return data;
-  },
-
   getAllocationData: (
     stats: DashboardStats,
     orders: Order[],

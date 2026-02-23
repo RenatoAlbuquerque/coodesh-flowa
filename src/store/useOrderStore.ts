@@ -5,9 +5,9 @@ import { calculateOrderExecution } from '../api/engine/calculateOrderExecution';
 import { toast } from 'react-toastify';
 import { useOrderFilters } from './useOrderFilters';
 import { api } from '../services/axios';
-import { portfolioService } from '../services/portfolioService';
 import type { IPortfolioStatusResponse } from '../@types/portfolio';
 import { assetsService } from '../services/assetsService';
+import { dashboardService } from '../services/dashboardService';
 
 interface OrderState {
   orders: IResponseOrders;
@@ -60,7 +60,10 @@ export const useOrderStore = create<OrderState>((set, get) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const response = await orderService.getAllOrders(currentFilters);
+      const response = await orderService.getAllOrders({
+        ...currentFilters,
+        _sort: '-createdAt',
+      });
 
       const ordersData = Array.isArray(response)
         ? {
@@ -86,8 +89,8 @@ export const useOrderStore = create<OrderState>((set, get) => ({
     try {
       const data = await assetsService.availableAssets();
       set({ availableAssets: data });
-    } catch (err) {
-      console.error('Erro ao buscar ativos disponíveis:', err);
+    } catch {
+      toast.error('Erro ao buscar ativos disponíveis:');
     }
   },
 
@@ -143,14 +146,28 @@ export const useOrderStore = create<OrderState>((set, get) => ({
       await orderService.logEvent({
         orderId,
         instrument: formData.instrument,
-        eventType:
-          result.status === 'Executada' ? 'Execução Total' : 'Ordem Criada',
-        details: `${formData.side} de ${formData.quantity} @ R$ ${formData.price}`,
+        eventType: 'Ordem Criada',
+        details: `Ordem de ${formData.side} inserida`,
         origin: 'Renato Abreu',
         timestamp: now,
       });
 
       if (result.hasMatch && result.match) {
+        const executedQty = formData.quantity - result.remainingQuantity;
+        const matchNow = new Date().toISOString();
+
+        await orderService.logEvent({
+          orderId,
+          instrument: formData.instrument,
+          eventType:
+            result.status === 'Executada'
+              ? 'Execução Total'
+              : 'Execução Parcial',
+          details: `${formData.side} de ${executedQty} @ R$ ${result.match.price} contra ${result.match.id}`,
+          origin: 'Sistema de Matching',
+          timestamp: matchNow,
+        });
+
         await orderService.updateOrder(
           result.match.id,
           result.counterpartUpdate,
@@ -163,15 +180,18 @@ export const useOrderStore = create<OrderState>((set, get) => ({
             result.counterpartUpdate.status === 'Executada'
               ? 'Execução Total'
               : 'Execução Parcial',
-          details: `Execução contra ${orderId}`,
+          details: `Execução contra ${orderId} (${executedQty} @ R$ ${result.match.price})`,
           origin: 'Sistema de Matching',
-          timestamp: now,
+          timestamp: matchNow,
         });
 
         toast.info(`Match instantâneo em ${formData.instrument}!`);
       }
 
-      const freshOrders = await orderService.getAllOrders(currentFilters);
+      const freshOrders = await orderService.getAllOrders({
+        ...currentFilters,
+        _sort: '-timestamp',
+      });
 
       const ordersData = Array.isArray(freshOrders)
         ? {
@@ -185,10 +205,9 @@ export const useOrderStore = create<OrderState>((set, get) => ({
         : freshOrders;
 
       set({ orders: ordersData, isLoading: false });
-    } catch (err) {
+    } catch {
       toast.error('❌ Falha ao conectar com o servidor.');
       set({ error: 'Falha ao processar ordem no servidor.' });
-      console.error(err);
     }
   },
 
@@ -220,7 +239,10 @@ export const useOrderStore = create<OrderState>((set, get) => ({
         timestamp: new Date().toISOString(),
       });
 
-      const freshOrders = await orderService.getAllOrders(currentFilters);
+      const freshOrders = await orderService.getAllOrders({
+        ...currentFilters,
+        _sort: '-timestamp',
+      });
 
       const ordersData = Array.isArray(freshOrders)
         ? {
@@ -245,7 +267,7 @@ export const useOrderStore = create<OrderState>((set, get) => ({
     type: 'COMPRA' | 'VENDA' | 'CANCELAMENTO_COMPRA',
   ) => {
     try {
-      const stats = await portfolioService.getDashboardStats();
+      const stats = await dashboardService.getDashboardStats();
       let newSaldo = stats.saldo_disponivel;
       let newInvestido = stats.valor_investido;
 
@@ -271,7 +293,7 @@ export const useOrderStore = create<OrderState>((set, get) => ({
   },
 
   getStats: async () => {
-    const data = await portfolioService.getDashboardStats();
+    const data = await dashboardService.getDashboardStats();
     set({ stats: data });
   },
 }));

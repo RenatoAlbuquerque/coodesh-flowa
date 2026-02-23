@@ -10,7 +10,7 @@ export const historyFilterSchema = z
     endDate: z.any().nullable().optional(),
     _page: z.number().nullable().optional(),
     _per_page: z.number().nullable().optional(),
-    _sort: z.string().nullable().optional()
+    _sort: z.string().nullable().optional(),
   })
   .refine(
     (data) => {
