@@ -5,6 +5,7 @@ import RealEstateAgentOutlinedIcon from '@mui/icons-material/RealEstateAgentOutl
 import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined';
 import { formatCurrency } from '../../../utils/formatNumber';
 import { Route } from '../../../routes/portfolio';
+import { scrollDisplay } from '../../../styles/globalCss';
 
 export const PortfolioStats = () => {
   const { stats: data, positions } = Route.useLoaderData();
@@ -72,6 +73,8 @@ export const PortfolioStats = () => {
       justifyContent="space-between"
       gap="20px"
       mb="32px"
+      overflow="auto"
+      sx={scrollDisplay}
     >
       {statsConfig.map((item) => (
         <StatCard key={item.label} {...item} />
@@ -101,6 +104,7 @@ const StatCard = memo(
       display="flex"
       flexDirection="column"
       gap="12px"
+      minWidth={'300px'}
     >
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Typography color="text.disabled" variant="body1">

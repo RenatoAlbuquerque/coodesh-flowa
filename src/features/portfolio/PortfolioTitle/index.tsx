@@ -14,12 +14,24 @@ export const PortfolioTitle = () => {
       py="32px"
       alignItems={'center'}
       justifyContent={'space-between'}
+      flexDirection={{ xs: 'column', md: 'row' }}
+      gap={{ xs: '20px', sm: '10px' }}
     >
       <Box>
-        <Typography variant="h1" fontWeight={700} pb="6px">
+        <Typography
+          variant="h1"
+          fontWeight={700}
+          pb="6px"
+          textAlign={{ xs: 'center', md: 'start' }}
+        >
           Meu Portfólio
         </Typography>
-        <Typography variant="h2" fontWeight={400} color="text.disabled">
+        <Typography
+          variant="h2"
+          fontWeight={400}
+          color="text.disabled"
+          textAlign={{ xs: 'center', md: 'start' }}
+        >
           Acompanhe a alocação dos seus ativos, saldo disponível e performance
           geral.
         </Typography>

@@ -43,7 +43,12 @@ export const PortfolioAllocation = () => {
       flexDirection="column"
       gap="24px"
     >
-      <Typography color="text.primary" variant="h2" fontWeight={600}>
+      <Typography
+        color="text.primary"
+        variant="h2"
+        fontWeight={600}
+        textAlign={{ xs: 'center', sm: 'start' }}
+      >
         Alocação por Classe de Ativo
       </Typography>
 
@@ -69,7 +74,13 @@ export const PortfolioAllocation = () => {
         ))}
       </Box>
 
-      <Stack direction="row" spacing={4} flexWrap="wrap">
+      <Stack
+        direction="row"
+        spacing={4}
+        flexWrap="wrap"
+        justifyContent={{ xs: 'center', sm: 'flex-start' }}
+        gap="10px"
+      >
         {allocationData.map((item) => (
           <Stack
             key={item.label}
