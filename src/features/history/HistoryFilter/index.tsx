@@ -8,6 +8,8 @@ import {
   Autocomplete,
   Button,
   InputAdornment,
+  Grid,
+  Stack,
 } from '@mui/material';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { EVENT_OPTIONS } from '../../../api/options';
@@ -92,164 +94,178 @@ export const HistoryFilter = () => {
       borderRadius={'8px'}
       gap="16px"
     >
-      <Box flex={1} maxWidth={'200px'}>
-        <Typography
-          color="text.disabled"
-          variant="caption"
-          fontWeight={600}
-          pb="4px"
-          display="block"
-        >
-          ID da Ordem
-        </Typography>
-        <Controller
-          name="orderId"
-          control={control}
-          render={({ field }) => (
-            <TextField
-              {...field}
+      <Grid
+        container
+        justifyContent={'space-between'}
+        width={'100%'}
+        alignItems={'end'}
+        spacing={{ xs: 0.5, sm: 1, lg: 2 }}
+      >
+        <Grid size={{ xs: 12, sm: 6, md: 4, lg: 1.8 }}>
+          <Typography
+            color="text.disabled"
+            variant="caption"
+            fontWeight={600}
+            pb="4px"
+            display="block"
+          >
+            ID da Ordem
+          </Typography>
+          <Controller
+            name="orderId"
+            control={control}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                fullWidth
+                size="small"
+                placeholder="EX: ORD-123"
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchOutlinedIcon htmlColor={text.disabled} />
+                      </InputAdornment>
+                    ),
+                  },
+                }}
+              />
+            )}
+          />
+        </Grid>
+
+        <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
+          <Typography
+            color="text.disabled"
+            variant="caption"
+            fontWeight={600}
+            pb="4px"
+            display="block"
+          >
+            Instrumento
+          </Typography>
+          <AutocompleteAvailableTickets
+            name="instrument"
+            control={control}
+            options={INSTRUMENT_OPTIONS}
+            placeholder="Todos os ativos"
+          />
+        </Grid>
+
+        <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
+          <Typography
+            color="text.disabled"
+            variant="caption"
+            fontWeight={600}
+            pb="4px"
+            display="block"
+          >
+            Lado
+          </Typography>
+          <Controller
+            name="eventType"
+            control={control}
+            render={({ field }) => (
+              <Autocomplete
+                {...field}
+                options={EVENT_OPTIONS}
+                onChange={(_, value) => field.onChange(value)}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    size="small"
+                    placeholder="Todos os eventos"
+                  />
+                )}
+                slotProps={{ paper: autocompletePaperStyle }}
+              />
+            )}
+          />
+        </Grid>
+
+        <Grid size={{ xs: 12, sm: 6, md: 4, lg: 1.5 }}>
+          <Typography
+            color="text.disabled"
+            variant="caption"
+            fontWeight={600}
+            pb="4px"
+            display="block"
+          >
+            Data Início
+          </Typography>
+          <Controller
+            name="startDate"
+            control={control}
+            render={({ field }) => (
+              <DatePicker
+                value={field.value}
+                onChange={(newValue) => field.onChange(newValue)}
+              />
+            )}
+          />
+        </Grid>
+
+        <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2 }}>
+          <Typography
+            color="text.disabled"
+            variant="caption"
+            fontWeight={600}
+            pb="4px"
+            display="block"
+          >
+            Data Fim
+          </Typography>
+          <Controller
+            name="endDate"
+            control={control}
+            render={({ field }) => (
+              <DatePicker
+                value={field.value}
+                onChange={(newValue) => field.onChange(newValue)}
+              />
+            )}
+          />
+        </Grid>
+
+        <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2.7 }}>
+          <Stack direction="row" spacing={2} width={'100%'}>
+            <Button
+              variant="contained"
               fullWidth
-              size="small"
-              placeholder="EX: #ORD-123"
-              slotProps={{
-                input: {
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchOutlinedIcon htmlColor={text.disabled} />
-                    </InputAdornment>
-                  ),
-                },
-              }}
-            />
-          )}
-        />
-      </Box>
+              size="large"
+              onClick={handleClear}
+              sx={{ boxShadow: 'none', bgcolor: text.disabled, height: '40px' }}
+            >
+              <Typography
+                variant="body1"
+                color="white"
+                textTransform="capitalize"
+                fontWeight={500}
+              >
+                Limpar
+              </Typography>
+            </Button>
 
-      <Box flex={1}>
-        <Typography
-          color="text.disabled"
-          variant="caption"
-          fontWeight={600}
-          pb="4px"
-          display="block"
-        >
-          Instrumento
-        </Typography>
-        <AutocompleteAvailableTickets
-          name="instrument"
-          control={control}
-          options={INSTRUMENT_OPTIONS}
-          placeholder="Todos os ativos"
-        />
-      </Box>
-
-      <Box flex={1} maxWidth={'160px'}>
-        <Typography
-          color="text.disabled"
-          variant="caption"
-          fontWeight={600}
-          pb="4px"
-          display="block"
-        >
-          Lado
-        </Typography>
-        <Controller
-          name="eventType"
-          control={control}
-          render={({ field }) => (
-            <Autocomplete
-              {...field}
-              options={EVENT_OPTIONS}
-              onChange={(_, value) => field.onChange(value)}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  size="small"
-                  placeholder="Todos os eventos"
-                />
-              )}
-              slotProps={{ paper: autocompletePaperStyle }}
-            />
-          )}
-        />
-      </Box>
-
-      <Box flex={1} maxWidth={'160px'}>
-        <Typography
-          color="text.disabled"
-          variant="caption"
-          fontWeight={600}
-          pb="4px"
-          display="block"
-        >
-          Data Início
-        </Typography>
-        <Controller
-          name="startDate"
-          control={control}
-          render={({ field }) => (
-            <DatePicker
-              value={field.value}
-              onChange={(newValue) => field.onChange(newValue)}
-            />
-          )}
-        />
-      </Box>
-
-      <Box flex={1} maxWidth={'160px'}>
-        <Typography
-          color="text.disabled"
-          variant="caption"
-          fontWeight={600}
-          pb="4px"
-          display="block"
-        >
-          Data Fim
-        </Typography>
-        <Controller
-          name="endDate"
-          control={control}
-          render={({ field }) => (
-            <DatePicker
-              value={field.value}
-              onChange={(newValue) => field.onChange(newValue)}
-            />
-          )}
-        />
-      </Box>
-
-      <Button
-        variant="contained"
-        size="large"
-        onClick={handleClear}
-        sx={{ boxShadow: 'none', bgcolor: text.disabled, height: '40px' }}
-      >
-        <Typography
-          variant="body1"
-          color="white"
-          textTransform="capitalize"
-          fontWeight={500}
-        >
-          Limpar
-        </Typography>
-      </Button>
-
-      <Button
-        type="submit"
-        variant="contained"
-        size="large"
-        sx={{ boxShadow: 'none', bgcolor: primary.dark, height: '40px' }}
-        disabled={isSubmitting || !isDirty}
-      >
-        <Typography
-          variant="body1"
-          color="white"
-          textTransform="capitalize"
-          fontWeight={500}
-        >
-          Filtrar
-        </Typography>
-      </Button>
+            <Button
+              fullWidth
+              type="submit"
+              variant="contained"
+              size="large"
+              sx={{ boxShadow: 'none', bgcolor: primary.dark, height: '40px' }}
+              disabled={isSubmitting || !isDirty}
+            >
+              <Typography
+                variant="body1"
+                color="white"
+                textTransform="capitalize"
+                fontWeight={500}
+              >
+                Filtrar
+              </Typography>
+            </Button>
+          </Stack>
+        </Grid>
+      </Grid>
     </Box>
   );
 };

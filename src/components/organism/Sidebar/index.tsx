@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, IconButton, useMediaQuery, useTheme } from '@mui/material';
+import { Box, IconButton, useTheme } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { Logo } from '../../atoms/Logo';
@@ -7,14 +7,12 @@ import { NavItems } from '../../molecules/NavItems';
 
 export const Sidebar = () => {
   const {
-    breakpoints,
     shadows,
     transitions,
     palette: { common },
   } = useTheme();
-  const isMobile = useMediaQuery(breakpoints.down('md'));
 
-  const [isCollapsed, setIsCollapsed] = useState(isMobile);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   const toggleSidebar = () => setIsCollapsed(!isCollapsed);
 

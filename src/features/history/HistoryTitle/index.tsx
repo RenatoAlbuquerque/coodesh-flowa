@@ -14,12 +14,24 @@ export const HistoryTitle = () => {
       py="32px"
       alignItems={'center'}
       justifyContent={'space-between'}
+      flexDirection={{ xs: 'column', sm: 'row' }}
+      gap={{ xs: '20px', sm: '10px' }}
     >
       <Box>
-        <Typography variant="h1" fontWeight={700} pb="6px">
+        <Typography
+          variant="h1"
+          fontWeight={700}
+          pb="6px"
+          textAlign={{ xs: 'center', sm: 'start' }}
+        >
           Histórico de Eventos
         </Typography>
-        <Typography variant="h2" fontWeight={400} color="text.disabled">
+        <Typography
+          variant="h2"
+          fontWeight={400}
+          color="text.disabled"
+          textAlign={{ xs: 'center', sm: 'start' }}
+        >
           Acompanhe o log completo de criações, execuções e cancelamentos de
           ordens.
         </Typography>
