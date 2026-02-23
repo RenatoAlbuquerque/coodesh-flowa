@@ -133,7 +133,12 @@ export const NewOrderModal = ({
     >
       <DialogTitle
         component="div"
-        sx={{ px: 4, pt: 4, pb: 1, position: 'relative' }}
+        sx={{
+          px: { xs: 2, md: 4 },
+          pt: { xs: 2, md: 4 },
+          pb: 1,
+          position: 'relative',
+        }}
       >
         <Typography variant="h1" fontWeight={700}>
           Nova Ordem
@@ -144,8 +149,14 @@ export const NewOrderModal = ({
       </DialogTitle>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <DialogContent sx={{ px: 4, py: 2, position: 'relative' }}>
-          <Grid container spacing={3}>
+        <DialogContent
+          sx={{
+            px: { xs: 2, md: 4 },
+            py: { xs: 2, md: 4 },
+            position: 'relative',
+          }}
+        >
+          <Grid container spacing={{ xs: 2, md: 3 }}>
             <Grid size={{ xs: 12 }} position={'relative'}>
               <Typography variant="body2" fontWeight={600} mb={1}>
                 Ativo Disponível
@@ -301,28 +312,34 @@ export const NewOrderModal = ({
             <Grid size={{ xs: 12 }}>
               <Box
                 bgcolor="secondary.main"
-                p={2.5}
+                p={{ xs: 1.5, md: 2.5 }}
                 borderRadius={2}
                 display="flex"
                 flexDirection="column"
-                gap={1.5}
+                gap={{ xs: 0.5, md: 1.5 }}
                 border="1px solid"
                 borderColor="divider"
               >
                 <Box
                   display="flex"
-                  justifyContent="space-between"
+                  justifyContent={{ xs: 'center', md: 'space-between' }}
                   alignItems="center"
+                  flexDirection={{ xs: 'column', md: 'row' }}
                 >
                   <Box>
                     <Typography
                       variant="body2"
                       color="text.secondary"
                       fontWeight={600}
+                      textAlign={{ xs: 'center', md: 'start' }}
                     >
                       TOTAL ESTIMADO
                     </Typography>
-                    <Typography variant="caption" color="text.disabled">
+                    <Typography
+                      variant="caption"
+                      color="text.disabled"
+                      textAlign={{ xs: 'center', md: 'start' }}
+                    >
                       Taxas da Flowa Stock não inclusas
                     </Typography>
                   </Box>
@@ -330,6 +347,7 @@ export const NewOrderModal = ({
                     variant="h6"
                     fontWeight={800}
                     color="primary.main"
+                    textAlign={{ xs: 'center', md: 'start' }}
                   >
                     {formatCurrency(totalEstimated)}
                   </Typography>
@@ -337,10 +355,11 @@ export const NewOrderModal = ({
 
                 <Box
                   display="flex"
-                  justifyContent="space-between"
                   alignItems="center"
-                  pt={1.5}
+                  pt={{ xs: 1, md: 1.5 }}
                   sx={{ borderTop: '1px dashed', borderColor: 'divider' }}
+                  justifyContent={{ xs: 'center', md: 'space-between' }}
+                  flexDirection={{ xs: 'column', md: 'row' }}
                 >
                   <Typography
                     variant="body2"
@@ -386,7 +405,15 @@ export const NewOrderModal = ({
         </DialogContent>
 
         <DialogActions
-          sx={{ px: 4, pb: 4, pt: 1, gap: 1, position: 'relative' }}
+          sx={{
+            px: { xs: 2, md: 4 },
+            pb: { xs: 2, md: 4 },
+            pt: 1,
+            gap: 1,
+            position: 'relative',
+            display: 'flex',
+            flexDirection: { xs: 'column-reverse', md: 'row' },
+          }}
         >
           <Button
             onClick={() => {
@@ -395,6 +422,7 @@ export const NewOrderModal = ({
             }}
             color="inherit"
             sx={{ fontWeight: 600 }}
+            size="large"
           >
             Cancelar
           </Button>
@@ -404,7 +432,7 @@ export const NewOrderModal = ({
             disabled={isSubmitting}
             size="large"
             sx={{
-              px: 6,
+              px: 2,
               py: 1.2,
               borderRadius: 2,
               textTransform: 'none',
