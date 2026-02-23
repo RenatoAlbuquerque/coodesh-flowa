@@ -16,13 +16,14 @@ const initialFilters: HistoryFilterData = {
   endDate: null,
   _page: 1,
   _per_page: 5,
+  _sort: '-timestamp',
 };
 
 export const useHistoryFilters = create<HistoryFiltersStore>((set) => ({
   filters: initialFilters,
   setFilters: (newFilters) =>
     set({
-      filters: { ...newFilters, _page: 1, _per_page: 5 },
+      filters: { ...newFilters, _page: 1, _per_page: 5, _sort: '-timestamp', },
     }),
   setPagination: (page: number, pageSize: number) =>
     set((state) => ({

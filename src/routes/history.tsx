@@ -6,6 +6,7 @@ import { useHistoryFilters } from '../store/useHistoryFilter';
 import { historyService } from '../services/historyService';
 import { assetsService } from '../services/assetsService';
 import type { IResponseHistory } from '../@types/api';
+import { toast } from 'react-toastify';
 
 export const Route = createFileRoute('/history')({
   beforeLoad: () => {
@@ -33,9 +34,8 @@ export const Route = createFileRoute('/history')({
       historyStore.setHistory(historyList as IResponseHistory);
 
       return { assets, historyList };
-    } catch (error) {
-      console.error(error);
-      throw new Error('Falha ao carregar dados do histórico');
+    } catch {
+      toast.error('Falha ao carregar dados do histórico');
     }
   },
   component: () => <HistoryPage />,

@@ -4,6 +4,7 @@ import { orderService } from '../services/orderService';
 import type { Order } from '../@types/api';
 import { DashboardPage } from '../features/dashboard';
 import { assetsService } from '../services/assetsService';
+import { toast } from 'react-toastify';
 
 export const Route = createFileRoute('/')({
   beforeLoad: () => {
@@ -27,15 +28,28 @@ export const Route = createFileRoute('/')({
         assets,
       );
 
-      const ordersLatest = await orderService.getLatestOrders(
-        ordersList as Order[],
-        3,
-      );
+      const dataLatest = await orderService.getAllOrders({
+        _sort: '-createdAt',
+        _page: 1,
+        _per_page: 3
+      });
 
-      const ordersLatestSellingOpen = await orderService.getLatestSellingOpen(
-        ordersList as Order[],
-        3,
-      );
+      const ordersLatest =
+        (typeof dataLatest === 'object' && 'data' in dataLatest)
+          ? dataLatest.data
+          : dataLatest;
+
+      const dataLatestSellingOpen = await orderService.getAllOrders({
+        side: 'VENDA',
+        _sort: '-createdAt',
+        _page: 1,
+        _per_page: 3
+      });
+
+      const ordersLatestSellingOpen =
+        (typeof dataLatestSellingOpen === 'object' && 'data' in dataLatestSellingOpen)
+          ? dataLatestSellingOpen.data
+          : dataLatestSellingOpen;
 
       return {
         stats,
@@ -46,8 +60,8 @@ export const Route = createFileRoute('/')({
         ordersLatest,
         ordersLatestSellingOpen,
       };
-    } catch (error) {
-      console.error('Erro ao carregar dados do portfólio:', error);
+    } catch {
+      toast.error('Erro ao carregar dados do portfólio:');
       throw new Error('Falha ao carregar portfólio');
     }
   },

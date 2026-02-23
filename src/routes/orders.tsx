@@ -4,6 +4,7 @@ import { orderService } from '../services/orderService';
 import { useOrderStore } from '../store/useOrderStore';
 import { useOrderFilters } from '../store/useOrderFilters';
 import type { IResponseOrders } from '../@types/api';
+import { toast } from 'react-toastify';
 
 export const Route = createFileRoute('/orders')({
   beforeLoad: () => {
@@ -25,7 +26,7 @@ export const Route = createFileRoute('/orders')({
 
       return { orders, assets };
     } catch {
-      throw new Error('Falha ao carregar dados iniciais');
+      toast.error('Falha ao carregar dados das Ordens');
     }
   },
 

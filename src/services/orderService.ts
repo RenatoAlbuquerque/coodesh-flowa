@@ -1,7 +1,6 @@
 import { api } from './axios';
 import type {
   AvailableAsset,
-  Database,
   IResponseOrders,
   Order,
   OrderHistory,
@@ -50,38 +49,5 @@ export const orderService = {
       remainingQuantity: 0,
     });
     return response.data;
-  },
-
-  getLatestOrders: async (ordersList: Order[], limit = 3): Promise<Order[]> => {
-    const ordersArray = Array.isArray(ordersList)
-      ? ordersList
-      : (ordersList as Database).orders || [];
-
-    return ordersArray
-      .sort((a: Order, b: Order) => {
-        return dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf();
-      })
-      .slice(0, limit);
-  },
-
-  getLatestSellingOpen: async (
-    ordersList: Order[],
-    limit = 3,
-  ): Promise<Order[]> => {
-    const ordersArray = Array.isArray(ordersList)
-      ? ordersList
-      : (ordersList as Database).orders || [];
-
-    return ordersArray
-      .filter(
-        (order: Order) =>
-          order.side === 'VENDA' &&
-          (order.status === 'Aberta' || order.status === 'Parcial'),
-      )
-      .sort(
-        (a: Order, b: Order) =>
-          dayjs(b.createdAt).valueOf() - dayjs(a.createdAt).valueOf(),
-      )
-      .slice(0, limit);
   },
 };

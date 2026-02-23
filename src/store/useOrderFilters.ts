@@ -16,6 +16,7 @@ const initialFilters: OrderFilterData = {
   date: null,
   _page: 1,
   _per_page: 5,
+  _sort: '-createdAt',
 };
 
 export const useOrderFilters = create<OrderFiltersStore>((set) => ({
@@ -26,7 +27,7 @@ export const useOrderFilters = create<OrderFiltersStore>((set) => ({
     }),
   setPagination: (page: number, pageSize: number) =>
     set((state) => ({
-      filters: { ...state.filters, _page: page, _per_page: pageSize },
+      filters: { ...state.filters, _page: page, _per_page: pageSize, },
     })),
   resetFilters: () => set({ filters: initialFilters }),
 }));

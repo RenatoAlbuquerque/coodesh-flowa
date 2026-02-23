@@ -3,6 +3,7 @@ import { PortfolioPage } from '../features/portfolio';
 import { portfolioService } from '../services/portfolioService';
 import { orderService } from '../services/orderService';
 import { assetsService } from '../services/assetsService';
+import { toast } from 'react-toastify';
 
 export const Route = createFileRoute('/portfolio')({
   beforeLoad: () => {
@@ -34,9 +35,8 @@ export const Route = createFileRoute('/portfolio')({
         positions,
         assets,
       };
-    } catch (error) {
-      console.error('Erro ao carregar dados do portfólio:', error);
-      throw new Error('Falha ao carregar portfólio');
+    } catch {
+      toast.error('Erro ao carregar dados do portfólio');
     }
   },
 
