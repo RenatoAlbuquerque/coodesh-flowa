@@ -2,6 +2,8 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { generatePortfolioReport } from './generatePortfolioReport';
+import type { DashboardStats } from '../../@types/api';
+import type { IPortfolioResponse } from '../../@types/portfolio';
 
 type MockAutoTableOptions = {
   head: string[][];
@@ -27,10 +29,13 @@ describe('generatePortfolioReport', () => {
     vi.clearAllMocks();
   });
 
-  const mockStats = {
+  const mockStats: DashboardStats = {
     patrimonio_total: 10000,
     saldo_disponivel: 2110,
     valor_investido: 7890,
+    rentabilidade_mes: 0,
+    variacao_diaria_percent: 0,
+    evolucao_patrimonial: [],
   };
 
   const mockAllocation = {
@@ -39,13 +44,15 @@ describe('generatePortfolioReport', () => {
     Caixa: 2110,
   };
 
-  const mockPositions = [
+  const mockPositions: IPortfolioResponse[] = [
     {
       symbol: 'ITUB4',
       type: 'Ações',
       quantity: 10,
       totalCost: 350,
       currentPrice: 35,
+      avgPrice: 35,
+      totalValue: 350,
       profitPercent: 0,
     },
     {
@@ -54,6 +61,8 @@ describe('generatePortfolioReport', () => {
       quantity: 2,
       totalCost: 2040,
       currentPrice: 1020,
+      avgPrice: 35,
+      totalValue: 350,
       profitPercent: 0,
     },
   ];

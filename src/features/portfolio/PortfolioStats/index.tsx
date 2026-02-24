@@ -6,9 +6,14 @@ import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined';
 import { formatCurrency } from '../../../utils/formatNumber';
 import { Route } from '../../../routes/portfolio';
 import { scrollDisplay } from '../../../styles/globalCss';
+import type { AvailableAsset, DashboardStats } from '../../../@types/api';
 
 export const PortfolioStats = () => {
-  const { stats: data, positions } = Route.useLoaderData();
+  const {
+    stats: data,
+    positions,
+  }: { stats: DashboardStats; positions: AvailableAsset[] } =
+    Route.useLoaderData();
 
   const statsConfig = useMemo(() => {
     const assetCount = positions?.length || 0;

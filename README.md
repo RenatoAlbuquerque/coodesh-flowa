@@ -68,7 +68,7 @@ $ npm start
 # Banco de dados (via JSON-Server):  
 $ http://localhost:3001
 # Front end: 
-$ http://localhost:5173/
+$ http://localhost:4173/
 ```
 
 ## 🤖 Testes Automatizados
