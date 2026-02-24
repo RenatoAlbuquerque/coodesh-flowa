@@ -57,7 +57,7 @@ Além de um editor de código como o [VSCode](https://code.visualstudio.com/).
 
 ```bash
 # Clone este repositório
-$ https://github.com/RenatoAlbuquerque/coodesh-flowa.git
+$ git clone https://github.com/RenatoAlbuquerque/coodesh-flowa.git
 # Acesse a pasta do projeto no terminal/cmd
 $ cd coodesh-flowa
 # Instale as dependências
