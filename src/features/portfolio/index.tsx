@@ -7,9 +7,11 @@ import { PortfolioTitle } from './PortfolioTitle';
 import { PortfolioStats } from './PortfolioStats';
 import { PortfolioAllocation } from './PortfolioAllocation';
 import { Route } from '../../routes/portfolio';
+import type { IPortfolioResponse } from '../../@types/portfolio';
 
 export const PortfolioPage = () => {
-  const { positions } = Route.useLoaderData();
+  const { positions }: { positions: IPortfolioResponse[] } =
+    Route.useLoaderData();
 
   return (
     <Box display={'flex'}>

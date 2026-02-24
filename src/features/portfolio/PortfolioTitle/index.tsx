@@ -3,11 +3,30 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import DownloadOutlinedIcon from '@mui/icons-material/DownloadOutlined';
 import { useTheme } from '@mui/material';
+import { Route } from '../../../routes/portfolio';
+import type { IPortfolioResponse } from '../../../@types/portfolio';
+import { generatePortfolioReport } from '../../../services/pdfs/generatePortfolioReport';
+import type { DashboardStats } from '../../../@types/api';
 
 export const PortfolioTitle = () => {
   const {
     palette: { common },
   } = useTheme();
+
+  const {
+    positions,
+    allocation,
+    stats,
+  }: {
+    positions: IPortfolioResponse[];
+    allocation: Record<string, number>;
+    stats: DashboardStats;
+  } = Route.useLoaderData();
+
+  const handleExportPDF = () => {
+    generatePortfolioReport(positions, allocation, stats);
+  };
+
   return (
     <Box
       display={'flex'}
@@ -41,6 +60,7 @@ export const PortfolioTitle = () => {
         startIcon={<DownloadOutlinedIcon htmlColor={common.white} />}
         size="large"
         color="primary"
+        onClick={handleExportPDF}
       >
         <Typography
           textTransform={'capitalize'}

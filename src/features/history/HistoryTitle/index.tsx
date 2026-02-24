@@ -3,11 +3,19 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import DownloadOutlinedIcon from '@mui/icons-material/DownloadOutlined';
 import { useTheme } from '@mui/material';
+import type { IResponseHistory } from '../../../@types/api';
+import { generateHistoryReport } from '../../../services/pdfs/generateHistoryReport';
 
-export const HistoryTitle = () => {
+export const HistoryTitle = ({ data }: { data: IResponseHistory }) => {
   const {
     palette: { text },
   } = useTheme();
+
+  const handleExportPDF = () => {
+    const dataToExport = data.data || [];
+    generateHistoryReport(dataToExport);
+  };
+
   return (
     <Box
       display={'flex'}
@@ -41,6 +49,7 @@ export const HistoryTitle = () => {
         startIcon={<DownloadOutlinedIcon htmlColor={text.primary} />}
         sx={{ borderColor: '#cacaca' }}
         size="large"
+        onClick={handleExportPDF}
       >
         <Typography
           textTransform={'capitalize'}

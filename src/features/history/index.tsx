@@ -33,7 +33,7 @@ export const HistoryPage = () => {
       <Box width={'100%'} overflow={'hidden'}>
         <Header />
         <ContainerCenter>
-          <HistoryTitle />
+          <HistoryTitle data={ordersHistory} />
           <HistoryFilter />
           <HistoryTable data={ordersHistory} />
         </ContainerCenter>

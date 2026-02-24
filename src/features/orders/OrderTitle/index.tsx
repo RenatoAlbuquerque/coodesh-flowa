@@ -5,10 +5,11 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { useState } from 'react';
 import { NewOrderModal } from '../../../components/molecules/Modals/NewOrderModal';
 import { Route } from '../../../routes/orders';
+import type { AvailableAsset } from '../../../@types/api';
 
 export const OrderTitle = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { assets } = Route.useLoaderData();
+  const { assets }: { assets: AvailableAsset[] } = Route.useLoaderData();
 
   return (
     <>
