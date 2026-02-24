@@ -348,6 +348,18 @@
       "owner": "Renato Abreu",
       "createdAt": "2026-02-23T21:00:44.693Z",
       "currentPrice": 1020
+    },
+    {
+      "id": "ORD-9444",
+      "instrument": "B3SA3",
+      "side": "VENDA",
+      "price": 23,
+      "quantity": 10,
+      "status": "Aberta",
+      "remainingQuantity": 10,
+      "owner": "Renato Abreu",
+      "createdAt": "2026-02-24T02:17:41.821Z",
+      "currentPrice": 23
     }
   ],
   "history": [
@@ -782,6 +794,15 @@
       "details": "Cancelamento manual da ordem ORD-9008",
       "origin": "Renato Abreu",
       "timestamp": "2026-02-23T21:14:38.547Z"
+    },
+    {
+      "id": "a8ee",
+      "orderId": "ORD-9444",
+      "instrument": "B3SA3",
+      "eventType": "Ordem Criada",
+      "details": "Ordem de VENDA inserida",
+      "origin": "Renato Abreu",
+      "timestamp": "2026-02-24T02:17:41.821Z"
     }
   ],
   "available_assets": [

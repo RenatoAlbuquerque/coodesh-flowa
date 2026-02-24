@@ -5,6 +5,7 @@ import { dashboardService } from './dashboardService';
 import type { AvailableAsset, DashboardStats } from '../@types/api';
 import dayjs from 'dayjs';
 import { orderService } from './orderService';
+import type { OrderFilterData } from '../features/orders/OrderFilter/helperOrderFilter';
 
 vi.mock('./axios', () => ({
   api: {
@@ -89,7 +90,7 @@ describe('API Services', () => {
   });
 
   describe('ordersService', () => {
-    it('deve aplicar todos os filtros simultaneamente (orderId, status e date)', async () => {
+    it('Aplica todos os filtros simultaneamente (orderId, status e date)', async () => {
       mockedApi.get.mockResolvedValue({ data: [] });
 
       const testDate = '2026-02-23';
@@ -114,11 +115,29 @@ describe('API Services', () => {
       });
     });
 
-    it('deve retornar erro quando a API de ordens falha', async () => {
+    it('Retorna erro quando a API de ordens falha', async () => {
       mockedApi.get.mockRejectedValue(new Error('Erro ao buscar ordens'));
       await expect(orderService.getAllOrders()).rejects.toThrow(
         'Erro ao buscar ordens',
       );
+    });
+
+    it('Deve aplicar filtro de múltiplos status usando o operador :in', async () => {
+      mockedApi.get.mockResolvedValue({ data: [] });
+
+      const filters = {
+        status: ['Aberta', 'Parcial'],
+        side: 'VENDA',
+      };
+
+      await orderService.getAllOrders(filters as unknown as OrderFilterData);
+
+      expect(mockedApi.get).toHaveBeenCalledWith('/orders', {
+        params: {
+          'status:in': 'Aberta,Parcial',
+          side: 'VENDA',
+        },
+      });
     });
   });
 });

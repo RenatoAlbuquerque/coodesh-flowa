@@ -18,7 +18,11 @@ export const orderService = {
     }
 
     if (status) {
-      params.status = status;
+      if (Array.isArray(status)) {
+        params['status:in'] = status.join(',');
+      } else {
+        params.status = status;
+      }
     }
 
     if (date) {
