@@ -73,6 +73,7 @@ export const TableOrderModal = ({ order }: { order: Order }) => {
         <span>
           {' '}
           <IconButton
+            data-testid="button-cancel-order"
             disabled={!isCancelable}
             size="small"
             onClick={() => setOpenCancel(true)}
@@ -198,6 +199,7 @@ export const TableOrderModal = ({ order }: { order: Order }) => {
             color="inherit"
             disabled={isPending}
             sx={{ fontWeight: 600, textTransform: 'none' }}
+            data-testid="button-return-modal"
           >
             Voltar
           </Button>
@@ -206,6 +208,7 @@ export const TableOrderModal = ({ order }: { order: Order }) => {
             variant="contained"
             color="error"
             disabled={isPending}
+            data-testid="button-confirm-cancel-order"
             sx={{
               borderRadius: 2,
               px: 3,

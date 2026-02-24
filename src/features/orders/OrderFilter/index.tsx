@@ -16,7 +16,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { SIDE_OPTIONS, STATUS_OPTIONS } from '../../../api/options';
 import { Route } from '../../../routes/orders';
 import { getUniqueValues } from '../../../utils/filterAttributes';
-import { DatePicker } from '../../../components/atoms/Datepicker';
+import { DatePickerComponent } from '../../../components/atoms/Datepicker';
 import { orderFilterSchema, type OrderFilterData } from './helperOrderFilter';
 import { useOrderFilters } from '../../../store/useOrderFilters';
 import { AutocompleteAvailableTickets } from '../../../components/atoms/Autocomplete/AutocompleteAvailableTickets';
@@ -226,7 +226,7 @@ export const OrderFilter = () => {
             name="date"
             control={control}
             render={({ field }) => (
-              <DatePicker
+              <DatePickerComponent
                 value={field.value}
                 onChange={(newValue) => field.onChange(newValue)}
               />

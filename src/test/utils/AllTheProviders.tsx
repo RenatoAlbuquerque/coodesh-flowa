@@ -7,12 +7,13 @@ import { ThemeProvider, createTheme } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import type { ReactElement, ReactNode } from 'react';
+import 'dayjs/locale/pt-br';
 
 const theme = createTheme();
 
 const AllTheProviders = ({ children }: { children: ReactNode }) => {
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </LocalizationProvider>
   );

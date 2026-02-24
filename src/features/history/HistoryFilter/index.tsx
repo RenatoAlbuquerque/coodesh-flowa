@@ -14,7 +14,7 @@ import {
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { EVENT_OPTIONS } from '../../../api/options';
 import { getUniqueValues } from '../../../utils/filterAttributes';
-import { DatePicker } from '../../../components/atoms/Datepicker';
+import { DatePickerComponent } from '../../../components/atoms/Datepicker';
 import { AutocompleteAvailableTickets } from '../../../components/atoms/Autocomplete/AutocompleteAvailableTickets';
 import {
   historyFilterSchema,
@@ -193,7 +193,7 @@ export const HistoryFilter = () => {
             name="startDate"
             control={control}
             render={({ field }) => (
-              <DatePicker
+              <DatePickerComponent
                 value={field.value}
                 onChange={(newValue) => field.onChange(newValue)}
               />
@@ -215,7 +215,7 @@ export const HistoryFilter = () => {
             name="endDate"
             control={control}
             render={({ field }) => (
-              <DatePicker
+              <DatePickerComponent
                 value={field.value}
                 onChange={(newValue) => field.onChange(newValue)}
               />

@@ -5,6 +5,7 @@ import { useOrderStore } from '../store/useOrderStore';
 import { useOrderFilters } from '../store/useOrderFilters';
 import type { IResponseOrders } from '../@types/api';
 import { toast } from 'react-toastify';
+import { assetsService } from '../services/assetsService';
 
 export const Route = createFileRoute('/orders')({
   beforeLoad: () => {
@@ -17,7 +18,7 @@ export const Route = createFileRoute('/orders')({
 
       const [orders, assets] = await Promise.all([
         orderService.getAllOrders(filters),
-        orderService.availableAssets(),
+        assetsService.availableAssets(),
       ]);
 
       const store = useOrderStore.getState();

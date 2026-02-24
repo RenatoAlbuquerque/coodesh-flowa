@@ -7,7 +7,11 @@ interface DatePickerProps {
   onChange: (newValue: Dayjs | null) => void;
 }
 
-export const DatePicker = ({ label, value, onChange }: DatePickerProps) => {
+export const DatePickerComponent = ({
+  label,
+  value,
+  onChange,
+}: DatePickerProps) => {
   return (
     <MuiDatePicker
       label={label}

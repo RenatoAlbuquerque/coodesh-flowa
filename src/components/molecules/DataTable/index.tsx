@@ -4,8 +4,6 @@ import UnfoldMoreOutlinedIcon from '@mui/icons-material/UnfoldMoreOutlined';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { ptBR } from '@mui/x-data-grid/locales';
-import { SkeletonLoadingTable } from '../Skeleton/SkeletonLoadingTable';
-
 interface DataTableProps<T> {
   rows: T[];
   columns: GridColDef[];
@@ -77,7 +75,6 @@ export const DataTable = <T extends Record<string, unknown>>({
         paginationModel={{ page, pageSize }}
         onPaginationModelChange={onPaginationModelChange}
         slots={{
-          loadingOverlay: () => <SkeletonLoadingTable pageSize={pageSize} />,
           noRowsOverlay: () => (
             <Stack height="100%" alignItems="center" justifyContent="center">
               <Typography variant="h2" color="text.secondary">

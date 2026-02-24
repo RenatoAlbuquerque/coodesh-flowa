@@ -12,7 +12,7 @@
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.{ts,tsx}\" --report-unused-disable-directives --max-warnings 0",
     "prepare": "husky",
-    "test:run": "vitest run"
+    "test:coverage": "vitest run --coverage"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [

@@ -1,10 +1,5 @@
 import { api } from './axios';
-import type {
-  AvailableAsset,
-  IResponseOrders,
-  Order,
-  OrderHistory,
-} from '../@types/api';
+import type { IResponseOrders, Order, OrderHistory } from '../@types/api';
 import type { OrderFilterData } from '../features/orders/OrderFilter/helperOrderFilter';
 import { cleanParams } from '../utils/filterAttributes';
 import dayjs from 'dayjs';
@@ -34,11 +29,6 @@ export const orderService = {
     const { data } = await api.get<IResponseOrders | Order[]>('/orders', {
       params,
     });
-    return data;
-  },
-
-  availableAssets: async (): Promise<AvailableAsset[]> => {
-    const { data } = await api.get<AvailableAsset[]>('/available_assets');
     return data;
   },
 
